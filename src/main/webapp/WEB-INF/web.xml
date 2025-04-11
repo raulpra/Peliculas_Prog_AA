@@ -4,7 +4,7 @@
     <display-name>Aplicación películas</display-name>
 
     <context-param>
-        <description>Ruta para almacenar las imágenes de los juegos</description>
+        <description>Ruta para almacenar las imágenes de las peliculas</description>
         <param-name>imagePath</param-name>
         <param-value>"C:/apache-tomcat-9.0.102/webapps/peliculas-images"</param-value>
     </context-param>
