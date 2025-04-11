@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app>
+    <display-name>Aplicación películas</display-name>
+
+    <context-param>
+        <description>Ruta para almacenar las imágenes de los juegos</description>
+        <param-name>imagePath</param-name>
+        <param-value>"C:/apache-tomcat-9.0.102/webapps/peliculas-images"</param-value>
+    </context-param>
+</web-app>
