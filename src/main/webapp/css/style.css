@@ -1,0 +1,14 @@
+header{
+    background-color: #d44b4b;
+}
+
+.imagen_logo{
+    height: 800px;
+    width: 80px;
+    object-fit:cover;
+}
+
+.hover-effect:hover {
+    background-color: #a4aeb6; /* Gris oscuro (Bootstrap: bg-secondary) */
+    color: #fff ;    /* Letras blancas */
+  }
