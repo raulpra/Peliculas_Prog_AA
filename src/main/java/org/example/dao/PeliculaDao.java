@@ -19,7 +19,7 @@ public class PeliculaDao {
     }
 
     public ArrayList<Pelicula> getAll() throws SQLException{
-        String sentenciasql = "SELECT * FROM peliculas";
+        String sentenciasql = "SELECT peliculas.*, generos.nombre AS genero_nombre FROM peliculas JOIN generos ON peliculas.id_genero = generos.id";
         PreparedStatement statement = null;
         ResultSet result = null;
 
@@ -35,7 +35,7 @@ public class PeliculaDao {
             pelicula.setDirector(result.getString("director"));
             pelicula.setSinopsis(result.getString("sinopsis"));
             pelicula.setFechaEstreno(result.getDate("fecha_estreno"));
-            pelicula.setGenero(result.getString("id_genero"));
+            pelicula.setGenero(result.getString("genero_nombre"));
             pelicula.setImagen(result.getString("imagen"));
             pelicula.setPuntuacion(result.getFloat("puntuacion"));
 
@@ -48,7 +48,7 @@ public class PeliculaDao {
 
 
     public Pelicula get(int id) throws SQLException, PeliculaNotFoundException {
-        String sentenciasql = "SELECT * FROM peliculas WHERE id = ?";
+        String sentenciasql = "SELECT peliculas.*, generos.nombre AS genero_nombre FROM peliculas JOIN generos ON peliculas.id_genero = generos.id WHERE peliculas.id = ?";
         PreparedStatement statement = null;
         ResultSet result = null;
 
@@ -65,7 +65,7 @@ public class PeliculaDao {
         pelicula.setDirector(result.getString("director"));
         pelicula.setSinopsis(result.getString("sinopsis"));
         pelicula.setFechaEstreno(result.getDate("fecha_estreno"));
-        pelicula.setGenero(result.getString("id_genero"));
+        pelicula.setGenero(result.getString("genero_nombre"));
         pelicula.setImagen(result.getString("imagen"));
         pelicula.setPuntuacion(result.getFloat("puntuacion"));
 
