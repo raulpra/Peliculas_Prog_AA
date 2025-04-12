@@ -1,6 +1,7 @@
 package org.example.dao;
 
 
+import org.example.exception.PeliculaNotFoundException;
 import org.example.model.Pelicula;
 
 import java.sql.Connection;
@@ -33,18 +34,46 @@ public class PeliculaDao {
             pelicula.setTitulo(result.getString("titulo"));
             pelicula.setDirector(result.getString("director"));
             pelicula.setSinopsis(result.getString("sinopsis"));
-            pelicula.setFechaEstreno(result.getDate("fechaEstreno"));
-            pelicula.setGenero(result.getString("genero"));
+            pelicula.setFechaEstreno(result.getDate("fecha_estreno"));
+            pelicula.setGenero(result.getString("id_genero"));
             pelicula.setImagen(result.getString("imagen"));
             pelicula.setPuntuacion(result.getFloat("puntuacion"));
 
             peliculaArrayList.add(pelicula);
         }
-
         statement.close();
+
         return peliculaArrayList;
     }
 
+
+    public Pelicula get(int id) throws SQLException, PeliculaNotFoundException {
+        String sentenciasql = "SELECT * FROM peliculas WHERE id = ?";
+        PreparedStatement statement = null;
+        ResultSet result = null;
+
+        statement = connection.prepareStatement(sentenciasql);
+        statement.setInt(1,id);
+        result = statement.executeQuery();
+
+        if (!result.next()){
+            throw new PeliculaNotFoundException();
+        }
+        Pelicula pelicula = new Pelicula();
+        pelicula.setId(result.getInt("id"));
+        pelicula.setTitulo(result.getString("titulo"));
+        pelicula.setDirector(result.getString("director"));
+        pelicula.setSinopsis(result.getString("sinopsis"));
+        pelicula.setFechaEstreno(result.getDate("fecha_estreno"));
+        pelicula.setGenero(result.getString("id_genero"));
+        pelicula.setImagen(result.getString("imagen"));
+        pelicula.setPuntuacion(result.getFloat("puntuacion"));
+
+        statement.close();
+
+        return pelicula;
+
+    }
 
     public boolean add (Pelicula pelicula) throws SQLException {
         String sentenciasql = "INSERT INTO peliculas (titulo, director, sinopsis, fechaEstreno, genero, imagen, puntuacion) VALUES (?,?,?,?,?,?,?)";
