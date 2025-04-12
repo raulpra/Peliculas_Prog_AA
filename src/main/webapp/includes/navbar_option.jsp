@@ -5,10 +5,10 @@
     <div class="container d-flex justify-content-center">
       <ul class="navbar-nav flex-row gap-4">
         <li class="nav-item">
-          <a class="nav-link fs-4 px-4 py-2 rounded hover-effect" href="peliculas.jsp">PELÍCULAS</a>
+          <a class="nav-link fs-4 px-4 py-2 rounded hover-effect" href="index.jsp">PELÍCULAS</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link fs-4 px-4 py-2 rounded hover-effect " href="generos.jsp">GÉNEROS</a>
+          <a class="nav-link fs-4 px-4 py-2 rounded hover-effect " href="login.jsp">GÉNEROS</a>
         </li>
 
         <!-- barra navegación administrador -->

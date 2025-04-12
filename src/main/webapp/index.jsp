@@ -18,8 +18,9 @@
         %>
 
         <div class="col">
-            <div class="card" style="width: 22rem;">
-                <img src="images/film.jpg" class="card-img-top" alt="...">
+            <div class="card shadow-lg rounded-3" style="width: 22rem">
+
+                <img src="images/film2.jpg" class="card-img-top" alt="...">
                 <img src="../peliculas-images/<%=pelicula.getImagen() %>" class="card-img-top" alt="...">
                 <div class="card-body">
                    <h5 class="card-title"><%=pelicula.getTitulo()%></h5>
