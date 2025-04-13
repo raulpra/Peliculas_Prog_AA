@@ -4,6 +4,7 @@ package org.example.dao;
 import org.example.exception.PeliculaNotFoundException;
 import org.example.model.Pelicula;
 
+import javax.servlet.ServletException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -93,4 +94,15 @@ public class PeliculaDao {
         return affectedRows != 0;
     }
 
+    public boolean delete ( int gameId) throws SQLException{
+        String sentenciasql = "DELETE FROM peliculas WHERE id=?";
+        PreparedStatement statement = null;
+        statement = connection.prepareStatement(sentenciasql);
+        statement.setInt(1,gameId);
+
+        int affectedRows = statement.executeUpdate();
+
+        return affectedRows !=0;
+
+    }
 }
