@@ -15,7 +15,7 @@
                     200: function(response) {
                       console.log("Respuesta del servidor:", response);
                         if (response === "ok") {
-                            window.location.href = "/steam";
+                            window.location.href = "/peliculas_app";
                         } else {
                             $("#result").html("<div class='alert alert-danger' role='alert'>" + response + "</div>");
                         }
