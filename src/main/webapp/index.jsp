@@ -33,12 +33,12 @@
                    %>
                    <a href="add_favoritos?pelicula_id=<=%pelicula.getId()%>" class="btn btn-primary">Marcar favorito</a>
                    <%
-                   }else if (role.equals("admin")){
+                        }else if (role.equals("admin")){
                    %>
                    <a href="edit_pelicula.jsp?pelicula_id=<%=pelicula.getId()%>" class="btn btn-primary">Modificar</a>
                    <a href="delete_pelicula?pelicula_id=<%=pelicula.getId()%>" class="btn btn-primary">Eliminar</a>
                    <%
-                   }
+                        }
                    %>
                 </div>
               </div>

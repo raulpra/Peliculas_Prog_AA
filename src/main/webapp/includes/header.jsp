@@ -11,12 +11,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Steam</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- añadimos jquery para poder usar ajax que es javascript-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<body style="background-color: rgb(185, 130, 130);">
+<body style="background-color: rgb(232,220,220);">
 
 <header>
   <!-- Barra de navegación principal -->
