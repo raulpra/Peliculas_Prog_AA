@@ -1,5 +1,13 @@
+body{
+    font-family: 'Roboto', sans-serif !important;
+}
+
 header{
     background-color: #d44b4b;
+}
+
+nav-bar {
+    font-weight: 500 !important;
 }
 
 .imagen_logo{
@@ -12,4 +20,5 @@ header{
     background-color: #a4aeb6; /* Gris oscuro (Bootstrap: bg-secondary) */
     color: #fff ;    /* Letras blancas */
   }
+
 
