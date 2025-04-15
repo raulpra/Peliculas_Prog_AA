@@ -30,9 +30,18 @@
             <%
                 HttpSession currentSession = request.getSession();
                 String role = "anonymous";
+                Integer userId = null;
+                String name = null;
                 if (currentSession.getAttribute("role") !=null){
                     role = currentSession.getAttribute("role").toString();
                 }
+                if (currentSession.getAttribute("id") !=null){
+                    //añadimos esta linea para coger id cuando pasamos usuario y cogemos tb id
+                    userId = (int) currentSession.getAttribute("id");
+                }
+               if (currentSession.getAttribute("nombre") !=null) {
+                   name = currentSession.getAttribute("nombre").toString();
+               }
                 if (role.equals("anonymous")) {
             %>
             <a href = "/peliculas_app/login.jsp" title = "Iniciar sesión" style="text-decoration:none; color:black">Iniciar sesión  <img src= "images/enter.png" height="30" width="30"></a>

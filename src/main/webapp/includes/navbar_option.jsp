@@ -16,17 +16,30 @@
             if (role.equals("usuario")){
         %>
          <li class="nav-item">
-             <a class="nav-link fs-4 px-4 py-2 rounded hover-effect text-white" href="favoritos.jsp">FAVORITOS</a>
+             <a class="nav-link fs-4 px-4 py-1 rounded hover-effect text-white" href="favoritos.jsp?">FAVORITOS</a>
          </li>
+
         <%
             } else if (role.equals("admin")){
         %>
         <li class="nav-item">
-            <a class="nav-link fs-4 px-4 py-2 rounded hover-effect text-white " href="usuarios.jsp">USUARIOS</a>
+            <a class="nav-link fs-4 px-4 py-1 rounded hover-effect text-white " href="usuarios.jsp">USUARIOS</a>
         </li>
         <%
         }
         %>
       </ul>
+
+        <ul class="navbar-nav ms-auto">
+            <%
+                if (role.equals("usuario")) {
+            %>
+            <li class="nav-item">
+                <a class="nav-link fs-6 px-3 py-1 rounded hover-effect text-white" href="detalle_usuario.jsp?usuario_id=<%=currentSession.getAttribute("id")%>">MI PERFIL</a>
+            </li>
+            <%
+                }
+            %>
+        </ul>
     </div>
   </nav>

@@ -6,7 +6,16 @@
 
   <!-- Contenido principal -->
   <div class="container mt-4 py-4" style="background-color: #ffffff ">
-        <h1>Bienvenido a Explorer Cinema</h1>
+        <% if (name != null){
+        %>
+        <h1>Bienvenido a Explorer Cinema <%= currentSession.getAttribute("nombre")%></h1>
+        <%
+            }else{
+        %>
+        <h1>Bienvenido a Explorer Cinema </h1>
+        <%
+            }
+        %>
         <p>Explora películas, géneros, y accede a más funciones al iniciar sesión.</p>
         <% if (role.equals("admin")){
         %>

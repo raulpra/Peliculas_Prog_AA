@@ -16,7 +16,7 @@ public class UsuarioDao {
     public UsuarioDao(Connection connection) {
         this.connection = connection;
     }
-
+/*
     public String loginUsers (String email, String password) throws SQLException, UsuarioNotFoundException {
 
         String sql = "SELECT role FROM usuarios WHERE email = ? AND password = ?";
@@ -30,6 +30,27 @@ public class UsuarioDao {
         }
 
         return result.getString("role");
+    }
+*/
+    //Login que devuelve un objeto usuario
+    public Usuario loginUsers(String email, String password) throws SQLException, UsuarioNotFoundException {
+        String sql = "SELECT id, nombre, email, password, role FROM usuarios WHERE email = ? AND password = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, email);
+        statement.setString(2, password);
+        ResultSet result = statement.executeQuery();
+
+        if (!result.next()) {
+            throw new UsuarioNotFoundException();
+        }
+
+        Usuario usuario = new Usuario();
+        usuario.setId(result.getInt("id"));
+        usuario.setNombre(result.getString("nombre"));
+        usuario.setEmail(result.getString("email"));
+        usuario.setPassword(result.getString("password"));
+        usuario.setRole(result.getString("role"));
+        return usuario;
     }
 
 
