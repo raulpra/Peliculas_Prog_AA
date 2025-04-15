@@ -5,7 +5,6 @@
 <%@include file="includes/header.jsp"%>
 <%@include file="includes/navbar_option.jsp"%>
 
-
 <%
   int usuarioId = Integer.parseInt(request.getParameter("usuario_id"));
   Database database = new Database();
@@ -14,8 +13,6 @@
   try{
     Usuario usuario = usuarioDao.getUsuario(usuarioId);
 %>
-
-
 
 <div class="container py-5">
   <div class="row justify-content-center">
@@ -32,7 +29,8 @@
         </div>
         <div class="card-footer text-end">
           <a href="usuarios.jsp" class="btn btn-secondary">Volver</a>
-          <a href="edit_usuario.jsp?usuario_id=<%= usuario.getId() %>" class="btn btn-primary">Editar</a>
+          <a href="edit_usuario.jsp?usuario_id=<%=usuario.getId()%>" class="btn btn-warning btn-sm">Editar</a>
+          <a href="delete_usuario?usuario_id=<%=usuario.getId()%>" class="btn btn-danger btn-sm">Eliminar</a>
         </div>
       </div>
     </div>

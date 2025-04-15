@@ -18,13 +18,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<body style="background-color: rgb(232,220,220);">
+<body class="bg-light">
 
 <header>
   <!-- Barra de navegación principal -->
      <nav class="navbar navbar-dark" style="background-color: #c61414 ">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.jsp"> <img src="images/ExplorerCinema.png" alt="Bootstrap" width="380" height="90"></a>
+            <a class="navbar-brand" href="index.jsp" > <img src="images/ExplorerCinema.png" alt="Bootstrap" width="380" height="90"></a>
 
             <!-- Cogemos la sesión actual -->
             <%
@@ -35,11 +35,11 @@
                 }
                 if (role.equals("anonymous")) {
             %>
-            <a href = "/peliculas_app/login.jsp" title = "Iniciar sesión"><img src= "images/enter.png" height="40" width="40"></a>
+            <a href = "/peliculas_app/login.jsp" title = "Iniciar sesión" style="text-decoration:none; color:black">Iniciar sesión  <img src= "images/enter.png" height="40" width="40"></a>
             <%
                 }else{
             %>
-            <a href = "/peliculas_app/logout" title = "Cerrar sesión"><img src= "images/exit.png" height="40" width="40"></a>
+            <a href = "/peliculas_app/logout" title = "Cerrar sesión" style="text-decoration:none; color:black">Cerrar sesión  <img src= "images/exit.png" height="40" width="40"></a>
             <%
             }
             %>

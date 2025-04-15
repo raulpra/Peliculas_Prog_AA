@@ -9,12 +9,20 @@
 <div class="container mt-4" style="background-color: #ffffff ">
     <h1>Bienvenido a Explorer Cinema</h1>
     <p>Explora películas, géneros, y accede a más funciones al iniciar sesión.</p>
+    <% if (role.equals("admin")){
+    %>
+        <div class="container d-flex justify-content-end py-3">
+            <a href="add_pelicula.jsp" class="btn btn-success">Añadir Género</a>
+        </div>
+    <%
+    }
+    %>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <%
             Database database = new Database();
             database.connect();
             GeneroDao generoDao = new GeneroDao(database.getConnection());
-            List<Genero> generoList = generoDao.getAll();
+            List<Genero> generoList = generoDao.getAllGeneros();
             for (Genero genero : generoList){
         %>
 
@@ -24,14 +32,7 @@
                 <div class="card-body">
                     <h5 class="card-title"><%= genero.getNombre() %></h5>
                     <p class="card-text"><%= genero.getDescripcion() %></p>
-                    <%
-                        if (role.equals("admin")) {
-                    %>
-                    <a href="edit_genero.jsp?genero_id=<%= genero.getId() %>" class="btn btn-primary">Modificar</a>
-                    <a href="delete_genero?genero_id=<%= genero.getId() %>" class="btn btn-danger">Eliminar</a>
-                    <%
-                        }
-                    %>
+                    <a href="detalle_genero.jsp?genero_id=<%=genero.getId() %>" class="btn btn-secondary">Detalles</a>
                 </div>
             </div>
         </div>
