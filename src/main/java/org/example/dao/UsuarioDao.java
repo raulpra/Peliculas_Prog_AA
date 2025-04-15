@@ -32,6 +32,7 @@ public class UsuarioDao {
         return result.getString("role");
     }
 
+
     public ArrayList<Usuario> getUsuarios() throws SQLException, UsuarioNotFoundException {
         String sql = "SELECT * FROM usuarios";
         PreparedStatement statement = null;
@@ -77,5 +78,17 @@ public class UsuarioDao {
         statement.close();
 
         return usuario;
+    }
+
+    public boolean delete(int usuarioId) throws SQLException {
+        String sentenciasql = "DELETE FROM usuarios WHERE id=?";
+        PreparedStatement statement = null;
+        statement = connection.prepareStatement(sentenciasql);
+        statement.setInt(1, usuarioId);
+
+        int affectedRows = statement.executeUpdate();
+
+        return affectedRows != 0;
+
     }
 }

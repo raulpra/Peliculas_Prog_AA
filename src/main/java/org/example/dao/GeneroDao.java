@@ -1,9 +1,7 @@
 package org.example.dao;
 
 import org.example.exception.GeneroNotFoundException;
-import org.example.exception.PeliculaNotFoundException;
 import org.example.model.Genero;
-import org.example.model.Pelicula;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,7 +16,7 @@ public class GeneroDao {
         this.connection = connection;
     }
 
-    public ArrayList<Genero> getAll() throws SQLException {
+    public ArrayList<Genero> getAllGeneros() throws SQLException {
         String sentenciasql = "SELECT * FROM generos";
         PreparedStatement statement = null;
         ResultSet result = null;
@@ -42,7 +40,7 @@ public class GeneroDao {
     }
 
 
-    public Genero get(int generoId) throws SQLException, GeneroNotFoundException {
+    public Genero getGenero(int generoId) throws SQLException, GeneroNotFoundException {
         String sentenciasql = "SELECT * FROM generos WHERE id = ?";
         PreparedStatement statement = null;
         ResultSet result = null;

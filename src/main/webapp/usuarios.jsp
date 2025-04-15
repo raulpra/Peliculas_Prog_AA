@@ -7,6 +7,14 @@
 
 <div class="container mt-5">
     <h2 class="mb-4">Gestión de Usuarios</h2>
+    <% if (role.equals("admin")){
+    %>
+        <div class="container d-flex justify-content-end py-3">
+            <a href="add_pelicula.jsp" class="btn btn-success">Añadir Usuario</a>
+        </div>
+    <%
+        }
+    %>
     <table class="table table-striped table-bordered align-middle shadow-sm">
         <thead class="table-dark">
         <tr>
@@ -30,9 +38,7 @@
             <td><%= usuario.getEmail() %></td>
             <td><%= usuario.getRole() %></td>
             <td>
-                <a href="detalle_usuario.jsp?usuario_id=<%=usuario.getId()%>" class="btn btn-primary btn-sm">Detalles</a>
-                <a href="edit_usuario.jsp?usuario_id=<%=usuario.getId()%>" class="btn btn-warning btn-sm">Editar</a>
-                <a href="delete_usuario?usuario_id=<%=usuario.getId()%>" class="btn btn-danger btn-sm">Eliminar</a>
+                <a href="detalle_usuario.jsp?usuario_id=<%=usuario.getId()%>" class="btn btn-secondary btn-sm">Detalles</a>
             </td>
         </tr>
         <%
@@ -41,6 +47,5 @@
         </tbody>
     </table>
 </div>
-
 
 <%@include file="includes/footer.jsp"%>

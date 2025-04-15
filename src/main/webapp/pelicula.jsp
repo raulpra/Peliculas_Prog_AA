@@ -14,6 +14,7 @@
     try{
         Pelicula pelicula = peliculaDao.get(peliculaId);
 %>
+
 <div class="container my-5 d-flex justify-content-center">
     <div class="card mb-3" style="max-width: 900px; width: 100%; min-height: 500px;">
         <div class="row g-0 h-100">
@@ -31,6 +32,18 @@
                     <p class="card-text"><strong>Sinopsis:</strong> <%=pelicula.getSinopsis()%> </p>
                 </div>
             </div>
+
+        </div>
+        <div class="card-footer text-end">
+            <a href="usuarios.jsp" class="btn btn-secondary">Volver</a>
+            <%
+                if (role.equals("admin")){
+            %>
+            <a href="edit_pelicula.jsp?pelicula_id=<%=pelicula.getId()%>" class="btn btn-warning">Modificar</a>
+            <a href="delete_pelicula?pelicula_id=<%=pelicula.getId()%>" class="btn btn-danger">Eliminar</a>
+            <%
+                }
+            %>
         </div>
     </div>
 </div>
@@ -42,6 +55,5 @@
 <%
 }
 %>
-
 
 <%@include file="includes/footer.jsp"%>

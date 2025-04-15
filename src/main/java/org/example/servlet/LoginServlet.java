@@ -3,6 +3,7 @@ package org.example.servlet;
 import org.example.dao.UsuarioDao;
 import org.example.database.Database;
 import org.example.exception.UsuarioNotFoundException;
+import org.example.model.Usuario;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
