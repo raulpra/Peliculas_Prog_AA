@@ -40,7 +40,7 @@ public class NewPeliculaServlet extends HttpServlet {
         }
 
         if (!validate(request)){
-            response.getWriter().println (errors.toString());
+            response.getWriter().print("error");
             return;
         }
 
@@ -108,7 +108,7 @@ public class NewPeliculaServlet extends HttpServlet {
             errors.add("El director es obligatorio");
         }
         if (request.getParameter("fecha_estreno").isEmpty()){
-            errors.add("Fecha estreno es obligatorio");
+            errors.add("Fecha de estreno es obligatorio");
         }
         return errors.isEmpty();
     }

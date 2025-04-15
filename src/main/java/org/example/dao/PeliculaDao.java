@@ -77,7 +77,7 @@ public class PeliculaDao {
     }
 
     public boolean add (Pelicula pelicula) throws SQLException {
-        String sentenciasql = "INSERT INTO peliculas (titulo, director, sinopsis, fechaEstreno, genero, imagen, puntuacion) VALUES (?,?,?,?,?,?,?)";
+        String sentenciasql = "INSERT INTO peliculas (titulo, director, sinopsis, fecha_estreno, imagen, puntuacion, id_genero) VALUES (?,?,?,?,?,?,?)";
         PreparedStatement statement = null;
 
         statement = connection.prepareStatement(sentenciasql);
@@ -85,9 +85,9 @@ public class PeliculaDao {
         statement.setString(2,pelicula.getDirector());
         statement.setString(3,pelicula.getSinopsis());
         statement.setDate(4, pelicula.getFechaEstreno());
-        statement.setString(5,pelicula.getGenero());
-        statement.setString(6,pelicula.getImagen());
-        statement.setFloat(7,pelicula.getPuntuacion());
+        statement.setString(5,pelicula.getImagen());
+        statement.setFloat(6,pelicula.getPuntuacion());
+        statement.setString(7,pelicula.getGenero());
 
         int affectedRows = statement.executeUpdate();
 
