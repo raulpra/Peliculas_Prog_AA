@@ -5,7 +5,7 @@
 
 <%
     if ((currentSession.getAttribute("role") == null) || (!currentSession.getAttribute("role").equals("admin")) ){
-        response.sendRedirect("/pelicula/login.jsp");
+        response.sendRedirect("/peliculas_app/login.jsp");
     }
 %>
 
@@ -44,7 +44,7 @@
 </script>
 
 <div class="container mt-5">
-    <h2 class="mb-4">Añadir Nuevo Género</h2>
+    <h2 class="mb-4">Añadir nuevo género</h2>
     <form method="post" id="genero-form"  class="shadow p-4 bg-white rounded">
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre del género</label>

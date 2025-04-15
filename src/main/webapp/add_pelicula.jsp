@@ -10,7 +10,7 @@
 
 <%
     if ((currentSession.getAttribute("role") == null) || (!currentSession.getAttribute("role").equals("admin")) ){
-      response.sendRedirect("/pelicula/login.jsp");
+      response.sendRedirect("/pelicula_app/login.jsp");
     }
 %>
 
@@ -65,7 +65,7 @@
 
 
 <div class="container mt-5">
-    <h2 class="mb-4">Añadir Nueva Película</h2>
+    <h2 class="mb-4">Añadir nueva película</h2>
     <form method="post" id="pelicula-form" enctype="multipart/form-data" class="shadow p-4 bg-white rounded">
         <div class="mb-3">
             <label for="titulo" class="form-label">Título</label>

@@ -32,7 +32,7 @@
                 <div class="card-body">
                     <h5 class="card-title"><%= genero.getNombre() %></h5>
                     <p class="card-text"><%= genero.getDescripcion() %></p>
-                    <a href="detalle_genero.jsp?genero_id=<%=genero.getId() %>" class="btn btn-secondary">Detalles</a>
+                    <a href="detalle_genero.jsp?genero_id=<%=genero.getId() %>" class="btn btn-secondary btn-sm">Detalles</a>
                 </div>
             </div>
         </div>
