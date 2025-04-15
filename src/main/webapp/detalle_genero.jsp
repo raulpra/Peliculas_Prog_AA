@@ -27,12 +27,12 @@
 
         </div>
         <div class="card-footer text-end">
-          <a href="generos.jsp" class="btn btn-secondary">Volver</a>
+          <a href="generos.jsp" class="btn btn-secondary btn-sm">Volver</a>
           <%
             if (role.equals("admin")){
           %>
-          <a href="edit_genero.jsp?genero_id=<%= genero.getId() %>" class="btn btn-warning">Editar</a>
-          <a href="delete_genero?genero_id=<%= genero.getId() %>" class="btn btn-danger">Eliminar</a>
+          <a href="edit_genero.jsp?genero_id=<%= genero.getId() %>" class="btn btn-warning btn-sm">Editar</a>
+          <a href="delete_genero?genero_id=<%= genero.getId() %>" class="btn btn-danger btn-sm">Eliminar</a>
           <%
             }
           %>

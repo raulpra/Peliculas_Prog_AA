@@ -28,7 +28,7 @@
           <!-- Puedes agregar más campos si tienes -->
         </div>
         <div class="card-footer text-end">
-          <a href="usuarios.jsp" class="btn btn-secondary">Volver</a>
+          <a href="usuarios.jsp" class="btn btn-secondary btn-sm">Volver</a>
           <a href="edit_usuario.jsp?usuario_id=<%=usuario.getId()%>" class="btn btn-warning btn-sm">Editar</a>
           <a href="delete_usuario?usuario_id=<%=usuario.getId()%>" class="btn btn-danger btn-sm">Eliminar</a>
         </div>

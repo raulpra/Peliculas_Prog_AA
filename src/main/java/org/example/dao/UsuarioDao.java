@@ -80,6 +80,21 @@ public class UsuarioDao {
         return usuario;
     }
 
+    public boolean addUsuario (Usuario usuario) throws SQLException {
+        String sql = "INSERT INTO usuarios (nombre, email, password, role) VALUES (?, ?, ?, ?)";
+        PreparedStatement statement = null;
+
+        statement = connection.prepareStatement(sql);
+        statement.setString(1, usuario.getNombre());
+        statement.setString(2, usuario.getEmail());
+        statement.setString(3, usuario.getPassword());
+        statement.setString(4,usuario.getRole());
+
+        int affectedRows = statement.executeUpdate();
+
+        return affectedRows != 0;
+    }
+
     public boolean delete(int usuarioId) throws SQLException {
         String sentenciasql = "DELETE FROM usuarios WHERE id=?";
         PreparedStatement statement = null;

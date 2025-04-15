@@ -40,7 +40,7 @@ public class NewPeliculaServlet extends HttpServlet {
         }
 
         if (!validate(request)){
-            response.getWriter().print("error");
+            response.getWriter().print(errors.toString());
             return;
         }
 
@@ -109,6 +109,9 @@ public class NewPeliculaServlet extends HttpServlet {
         }
         if (request.getParameter("fecha_estreno").isEmpty()){
             errors.add("Fecha de estreno es obligatorio");
+        }
+        if (request.getParameter("id_genero").isEmpty()) {
+            errors.add("Seleccione un genero");
         }
         return errors.isEmpty();
     }

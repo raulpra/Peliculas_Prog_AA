@@ -5,17 +5,23 @@
 <%@include file="includes/header.jsp"%>
 <%@include file="includes/navbar_option.jsp"%>
 
+<%
+    if ((currentSession.getAttribute("role") == null) || (!currentSession.getAttribute("role").equals("admin")) ){
+        response.sendRedirect("/peliculas_app/login.jsp");
+    }
+%>
+
 <div class="container mt-5">
     <h2 class="mb-4">Gestión de Usuarios</h2>
     <% if (role.equals("admin")){
     %>
         <div class="container d-flex justify-content-end py-3">
-            <a href="add_pelicula.jsp" class="btn btn-success">Añadir Usuario</a>
+            <a href="add_usuario.jsp" class="btn btn-success">Añadir Usuario</a>
         </div>
     <%
         }
     %>
-    <table class="table table-striped table-bordered align-middle shadow-sm">
+    <table class="table table-striped table-bordered align-middle shadow-sm rounded-3">
         <thead class="table-dark">
         <tr>
             <th scope="col">Nombre</th>

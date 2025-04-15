@@ -35,12 +35,12 @@
 
         </div>
         <div class="card-footer text-end">
-            <a href="usuarios.jsp" class="btn btn-secondary">Volver</a>
+            <a href="index.jsp" class="btn btn-secondary btn-sm">Volver</a>
             <%
                 if (role.equals("admin")){
             %>
-            <a href="edit_pelicula.jsp?pelicula_id=<%=pelicula.getId()%>" class="btn btn-warning">Modificar</a>
-            <a href="delete_pelicula?pelicula_id=<%=pelicula.getId()%>" class="btn btn-danger">Eliminar</a>
+            <a href="edit_pelicula.jsp?pelicula_id=<%=pelicula.getId()%>" class="btn btn-warning btn-sm">Modificar</a>
+            <a href="delete_pelicula?pelicula_id=<%=pelicula.getId()%>" class="btn btn-danger btn-sm">Eliminar</a>
             <%
                 }
             %>
