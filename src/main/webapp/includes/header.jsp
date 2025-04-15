@@ -35,11 +35,11 @@
                 }
                 if (role.equals("anonymous")) {
             %>
-            <a href = "/peliculas_app/login.jsp" title = "Iniciar sesión" style="text-decoration:none; color:black">Iniciar sesión  <img src= "images/enter.png" height="40" width="40"></a>
+            <a href = "/peliculas_app/login.jsp" title = "Iniciar sesión" style="text-decoration:none; color:black">Iniciar sesión  <img src= "images/enter.png" height="30" width="30"></a>
             <%
                 }else{
             %>
-            <a href = "/peliculas_app/logout" title = "Cerrar sesión" style="text-decoration:none; color:black">Cerrar sesión  <img src= "images/exit.png" height="40" width="40"></a>
+            <a href = "/peliculas_app/logout" title = "Cerrar sesión" style="text-decoration:none; color:black">Cerrar sesión  <img src= "images/exit.png" height="30" width="30"></a>
             <%
             }
             %>

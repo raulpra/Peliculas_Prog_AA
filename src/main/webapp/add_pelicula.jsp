@@ -33,7 +33,7 @@
                     200: function(response) {
                         console.log("Respuesta del servidor:", response);
                         if (response === "ok") {
-                          window.location.href = "/peliculas_app/add_pelicula.jsp";
+                          window.location.href = "/peliculas_app/index.jsp";
                         } else {
                           /*con esto siempre se queda el mensaje de login en fondo rojo.
                           $("#result").html(response);*/
@@ -101,7 +101,7 @@
             <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*" required>
         </div>
         <button type="submit" class="btn btn-primary">Guardar Película</button>
-        <a href="index.jsp" class="btn btn-secondary ms-2">Cancelar</a>
+        <a href="index.jsp" class="btn btn-secondary ms-2">Volver</a>
 
       <div id="result"></div>
     </form>

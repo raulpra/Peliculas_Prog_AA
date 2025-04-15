@@ -5,7 +5,7 @@
 
 
   <!-- Contenido principal -->
-  <div class="container mt-4" style="background-color: #ffffff ">
+  <div class="container mt-4 py-4" style="background-color: #ffffff ">
         <h1>Bienvenido a Explorer Cinema</h1>
         <p>Explora películas, géneros, y accede a más funciones al iniciar sesión.</p>
         <% if (role.equals("admin")){

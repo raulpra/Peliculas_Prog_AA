@@ -6,13 +6,13 @@
 <%@include file="includes/navbar_option.jsp"%>
 
 <!-- Contenido principal -->
-<div class="container mt-4" style="background-color: #ffffff ">
+<div class="container mt-4 py-4" style="background-color: #ffffff ">
     <h1>Bienvenido a Explorer Cinema</h1>
     <p>Explora películas, géneros, y accede a más funciones al iniciar sesión.</p>
     <% if (role.equals("admin")){
     %>
         <div class="container d-flex justify-content-end py-3">
-            <a href="add_pelicula.jsp" class="btn btn-success">Añadir Género</a>
+            <a href="add_genero.jsp" class="btn btn-success">Añadir Género</a>
         </div>
     <%
     }
