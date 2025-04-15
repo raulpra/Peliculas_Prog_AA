@@ -31,11 +31,21 @@ public class LoginServlet extends HttpServlet {
             Database database = new Database();
             database.connect();
             UsuarioDao usuarioDao = new UsuarioDao(database.getConnection());
+            /*Cuando usamos el login que solo devuelve el role
             String role = usuarioDao.loginUsers(email, password);
 
             HttpSession session = request.getSession();
             session.setAttribute("email", email);
-            session.setAttribute("role", role);
+            session.setAttribute("role", role);*/
+
+            //Cuando usamos el login que devuelve el objeto Usuario
+            Usuario usuario = usuarioDao.loginUsers(email, password);
+            HttpSession session = request.getSession();
+            session.setAttribute("email", usuario.getEmail());
+            session.setAttribute("role", usuario.getRole());
+            session.setAttribute("nombre", usuario.getNombre());
+            session.setAttribute("id", usuario.getId());
+
 
             response.getWriter().print("ok");
 

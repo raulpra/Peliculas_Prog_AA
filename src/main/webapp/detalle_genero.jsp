@@ -23,7 +23,7 @@
         </div>
         <div class="card-body p-4">
           <p><strong>Nombre:</strong> <%= genero.getNombre() %></p>
-          <p><strong>Email:</strong> <%= genero.getDescripcion() %></p>
+          <p><strong>Descripción:</strong> <%= genero.getDescripcion() %></p>
 
         </div>
         <div class="card-footer text-end">
