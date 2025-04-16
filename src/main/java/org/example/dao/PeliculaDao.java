@@ -94,6 +94,24 @@ public class PeliculaDao {
         return affectedRows != 0;
     }
 
+    public boolean update (Pelicula pelicula) throws SQLException {
+        String sentenciasql = "UPDATE peliculas SET titulo = ?, director = ?, sinopsis = ?, fecha_estreno = ?, puntuacion = ?, id_genero = ? WHERE id = ?";
+
+        PreparedStatement statement = null;
+        statement = connection.prepareStatement(sentenciasql);
+        statement.setString(1, pelicula.getTitulo());
+        statement.setString(2, pelicula.getDirector());
+        statement.setString(3, pelicula.getSinopsis());
+        statement.setDate(4, pelicula.getFechaEstreno());
+        statement.setFloat(5, pelicula.getPuntuacion());
+        statement.setString(6, pelicula.getGenero());
+        statement.setInt(7, pelicula.getId());
+
+        int affectedRows = statement.executeUpdate();
+
+        return affectedRows != 0;
+    }
+
     public boolean delete ( int gameId) throws SQLException{
         String sentenciasql = "DELETE FROM peliculas WHERE id=?";
         PreparedStatement statement = null;
