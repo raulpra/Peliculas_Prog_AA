@@ -116,6 +116,21 @@ public class UsuarioDao {
         return affectedRows != 0;
     }
 
+    public boolean update (Usuario usuario) throws SQLException {
+        String sentenciasql = "UPDATE usuarios SET nombre = ?, email = ?, password = ? WHERE id = ?";
+        PreparedStatement statement = null;
+        statement = connection.prepareStatement(sentenciasql);
+
+        statement.setString(1, usuario.getNombre());
+        statement.setString(2, usuario.getEmail());
+        statement.setString(3, usuario.getPassword());
+        statement.setInt(4, usuario.getId());
+
+        int affectedRows = statement.executeUpdate();
+
+        return affectedRows != 0;
+    }
+
     public boolean delete(int usuarioId) throws SQLException {
         String sentenciasql = "DELETE FROM usuarios WHERE id=?";
         PreparedStatement statement = null;

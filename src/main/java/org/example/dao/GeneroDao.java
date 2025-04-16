@@ -76,6 +76,20 @@ public class GeneroDao {
         return affectedRows != 0;
     }
 
+    public boolean update(Genero genero) throws SQLException {
+        String sentinciasql = "UPDATE generos SET nombre = ?, descripcion = ? WHERE id = ?";
+        PreparedStatement statement = null;
+        statement = connection.prepareStatement(sentinciasql);
+
+        statement.setString(1,genero.getNombre());
+        statement.setString(2, genero.getDescripcion());
+        statement.setInt(3, genero.getId());
+
+        int affectedRows = statement.executeUpdate();
+
+        return affectedRows != 0;
+    }
+
     public boolean delete(int generoId) throws SQLException {
         String sentenciasql = "DELETE FROM generos WHERE id=?";
         PreparedStatement statement = null;
