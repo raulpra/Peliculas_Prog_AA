@@ -103,6 +103,8 @@
         <button type="submit" class="btn btn-primary">Guardar Película</button>
         <a href="index.jsp" class="btn btn-secondary ms-2">Volver</a>
 
+        <input type="hidden" name="action" value="">
+
       <div id="result"></div>
     </form>
 </div>

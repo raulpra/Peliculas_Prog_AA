@@ -14,29 +14,22 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
-@WebServlet("/add_genero")
-public class NewGeneroServlet extends HttpServlet {
+@WebServlet("/edit_genero")
+public class EditGeneroServlet extends HttpServlet {
 
     private ArrayList<String> errors;
 
     @Override
-    public void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
 
         HttpSession currentSession = request.getSession();
         if (currentSession.getAttribute("role") == null) {
             response.sendRedirect("/peliculas_app/login.jsp");
-
         }
 
-        if (!validate(request)) {
-            response.getWriter().print(errors.toString());
-            return;
-        }
-
+        int id = Integer.parseInt(request.getParameter("id"));
         String nombre = request.getParameter("nombre");
         String descripcion = request.getParameter("descripcion");
 
@@ -45,16 +38,16 @@ public class NewGeneroServlet extends HttpServlet {
             database.connect();
             GeneroDao generoDao = new GeneroDao(database.getConnection());
             Genero genero = new Genero();
+            genero.setId(id);
             genero.setNombre(nombre);
             genero.setDescripcion(descripcion);
 
-            boolean added = generoDao.add(genero);
-            if (added) {
+            boolean edited = generoDao.update(genero);
+            if (edited){
                 response.getWriter().print("ok");
-            }else{
-                response.getWriter().print("No se ha podido registrar el género");
+            }else {
+                response.getWriter().print("No se ha podido actualizar el género");
             }
-
         } catch (SQLException sqle){
             try{
                 response.getWriter().println("No se ha podido conectar con la base de datos");
@@ -64,7 +57,7 @@ public class NewGeneroServlet extends HttpServlet {
                 ioe.printStackTrace();
             }
             sqle.printStackTrace();
-        } catch (IOException ioe){
+        }catch (IOException ioe){
             ioe.printStackTrace();
         }catch (ClassNotFoundException cnfe){
             cnfe.printStackTrace();

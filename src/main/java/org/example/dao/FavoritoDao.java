@@ -1,5 +1,6 @@
 package org.example.dao;
 
+import org.example.model.Genero;
 import org.example.model.Pelicula;
 
 import java.sql.Connection;
@@ -42,5 +43,32 @@ public class FavoritoDao {
         }
 
         return favoritosList;
+    }
+
+    public boolean addFavorito(int usuarioId, int peliculaId) throws SQLException {
+        String sentenciasql = "INSERT INTO favoritos (id_usuario, id_pelicula) VALUES (?,?)";
+        PreparedStatement statement = null;
+
+        statement = connection.prepareStatement(sentenciasql);
+        statement.setInt(1,usuarioId);
+        statement.setInt(2, peliculaId);
+
+        int affectedRows = statement.executeUpdate();
+
+        return affectedRows != 0;
+    }
+
+    public boolean deleteFavorito(int usuarioId, int peliculaId) throws SQLException {
+        String sentenciasql = "DELETE FROM favoritos WHERE id_usuario = ? AND id_pelicula = ?";
+        PreparedStatement statement = null;
+
+        statement = connection.prepareStatement(sentenciasql);
+        statement.setInt(1, usuarioId);
+        statement.setInt(2, peliculaId);
+
+        int affectedRows = statement.executeUpdate();
+
+        return affectedRows != 0;
+
     }
 }

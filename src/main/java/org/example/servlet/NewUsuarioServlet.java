@@ -28,6 +28,7 @@ public class NewUsuarioServlet extends HttpServlet {
         HttpSession currentSession = request.getSession();
         if (currentSession.getAttribute("role") == null) {
             response.sendRedirect("/peliculas_app/login.jsp");
+
         }
 
         if (!validate(request)) {

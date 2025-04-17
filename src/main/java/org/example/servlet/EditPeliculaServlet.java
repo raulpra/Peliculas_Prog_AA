@@ -20,10 +20,10 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 
-@WebServlet("/add_pelicula")
+@WebServlet("/edit_pelicula")
 @MultipartConfig
 
-public class NewPeliculaServlet extends HttpServlet {
+public class EditPeliculaServlet extends HttpServlet {
 
     private ArrayList<String> errors;
 
@@ -34,7 +34,7 @@ public class NewPeliculaServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         HttpSession currentSession = request.getSession();
-        if (currentSession.getAttribute("role") == null){
+        if ((currentSession.getAttribute("role") == null) || (!currentSession.getAttribute("role").equals("admin"))){
             response.sendRedirect("/peliculas_app/login.jsp");
             return;
         }
@@ -43,7 +43,7 @@ public class NewPeliculaServlet extends HttpServlet {
             response.getWriter().print(errors.toString());
             return;
         }
-
+        int id = Integer.parseInt(request.getParameter("id"));
         String titulo = request.getParameter("titulo");
         String director = request.getParameter("director");
         String sinopsis = request.getParameter("sinopsis");
@@ -64,7 +64,8 @@ public class NewPeliculaServlet extends HttpServlet {
             pelicula.setFechaEstreno(fecha);
             pelicula.setPuntuacion(Float.parseFloat(puntuacion));
             pelicula.setGenero(genero);
-
+            pelicula.setId(id);
+    /*
             String filename = "film.jpg";
             if (image.getSize() != 0) {
                 //creo un nombre de foto aleatorio y por ahora solo damos por válido jpg
@@ -75,12 +76,12 @@ public class NewPeliculaServlet extends HttpServlet {
                 Files.copy(inputStream, Path.of(imagePath + File.separator + filename));
             }
             pelicula.setImagen(filename);
-
-            boolean added = peliculaDao.add(pelicula);
-            if (added) {
+*/
+            boolean edited = peliculaDao.update(pelicula);
+            if (edited) {
                 response.getWriter().print("ok");
             } else {
-                response.getWriter().print("No se ha podido registrar la película");
+                response.getWriter().print("No se ha podido actualizar la película");
             }
 
         } catch (SQLException sqle) {

@@ -11,47 +11,49 @@
     }
 %>
 
-<div class="container mt-5">
-    <h2 class="mb-4">Gestión de Usuarios</h2>
-    <% if (role.equals("admin")){
-    %>
-        <div class="container d-flex justify-content-end py-3">
-            <a href="add_usuario.jsp" class="btn btn-success">Añadir Usuario</a>
-        </div>
-    <%
-        }
-    %>
-    <table class="table table-striped table-bordered align-middle shadow-sm rounded-3">
-        <thead class="table-dark">
-        <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Email</th>
-            <th scope="col">Rol</th>
-            <th scope="col">Acciones</th>
-        </tr>
-        </thead>
-        <tbody>
-        <%
-            Database database = new Database();
-            database.connect();
-            UsuarioDao usuarioDao = new UsuarioDao(database.getConnection());
-            List<Usuario> usuarioList = usuarioDao.getUsuarios();
-
-            for (Usuario usuario : usuarioList) {
+<div class="container mt-4 py-4" style="background-color: #ffffff ">
+    <div class="container mt-5">
+        <h2 class="mb-4">Gestión de Usuarios</h2>
+        <% if (role.equals("admin")){
         %>
-        <tr>
-            <td><%= usuario.getNombre() %></td>
-            <td><%= usuario.getEmail() %></td>
-            <td><%= usuario.getRole() %></td>
-            <td>
-                <a href="detalle_usuario.jsp?usuario_id=<%=usuario.getId()%>" class="btn btn-secondary btn-sm">Detalles</a>
-            </td>
-        </tr>
+            <div class="container d-flex justify-content-end py-3">
+                <a href="add_usuario.jsp" class="btn btn-success">Añadir Usuario</a>
+            </div>
         <%
             }
         %>
-        </tbody>
-    </table>
+        <table class="table table-striped table-bordered align-middle shadow-sm rounded-3">
+            <thead class="table-dark">
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Email</th>
+                <th scope="col">Rol</th>
+                <th scope="col">Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <%
+                Database database = new Database();
+                database.connect();
+                UsuarioDao usuarioDao = new UsuarioDao(database.getConnection());
+                List<Usuario> usuarioList = usuarioDao.getUsuarios();
+
+                for (Usuario usuario : usuarioList) {
+            %>
+            <tr>
+                <td><%= usuario.getNombre() %></td>
+                <td><%= usuario.getEmail() %></td>
+                <td><%= usuario.getRole() %></td>
+                <td>
+                    <a href="detalle_usuario.jsp?usuario_id=<%=usuario.getId()%>" class="btn btn-secondary btn-sm">Detalles</a>
+                </td>
+            </tr>
+            <%
+                }
+            %>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <%@include file="includes/footer.jsp"%>
