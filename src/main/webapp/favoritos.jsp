@@ -11,8 +11,8 @@
 %>
 
 <div class="container mt-4 py-4" style="background-color: #ffffff ">
-    <h1 class="mb-4">Mis Favoritos <%= currentSession.getAttribute("nombre")%> </h1>
-
+    <h1 class="mb-4">Tus películas favoritas <%= currentSession.getAttribute("nombre")%> </h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
         <%
 
                 Database database = new Database();
@@ -32,11 +32,11 @@
                 <h5 class="card-title"><%=pelicula.getDirector()%></h5>
                 <h5 class="card-title"><%=pelicula.getPuntuacion()%></h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="pelicula.jsp?pelicula_id=<%=pelicula.getId()%>" class="btn btn-secondary btn-sm">Detalles</a>
+                <a href="detalle_pelicula.jsp?pelicula_id=<%=pelicula.getId()%>" class="btn btn-secondary btn-sm">Detalles</a>
                 <%
                     if (role.equals("usuario")){
                 %>
-                <a href="add_favoritos?pelicula_id=<=%pelicula.getId()%>" class="btn btn-primary btn-sm">Marcar favorito</a>
+                <a href="delete_favoritos?pelicula_id=<%=pelicula.getId()%>" class="btn btn-primary btn-sm">Quitar favorito</a>
                 <%
                     }
                 %>
@@ -46,5 +46,5 @@
     <%
         }
     %>
-
+    </div>
 </div>

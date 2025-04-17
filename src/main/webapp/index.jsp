@@ -43,11 +43,11 @@
                        <h5 class="card-title"><%=pelicula.getDirector()%></h5>
                        <h5 class="card-title"><%=pelicula.getPuntuacion()%></h5>
                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                       <a href="pelicula.jsp?pelicula_id=<%=pelicula.getId()%>" class="btn btn-secondary btn-sm">Detalles</a>
+                       <a href="detalle_pelicula.jsp?pelicula_id=<%=pelicula.getId()%>" class="btn btn-secondary btn-sm">Detalles</a>
                        <%
                             if (role.equals("usuario")){
                        %>
-                       <a href="add_favoritos?pelicula_id=<=%pelicula.getId()%>" class="btn btn-primary btn-sm">Marcar favorito</a>
+                       <a href="add_favoritos?pelicula_id=<%=pelicula.getId()%>" class="btn btn-primary btn-sm">Marcar favorito</a>
                        <%
                             }
                        %>
@@ -58,9 +58,6 @@
         }
         %>
         </div>
-
-
   </div>
 
 <%@include file="includes/footer.jsp"%>
-

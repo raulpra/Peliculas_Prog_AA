@@ -1,8 +1,8 @@
 package org.example.servlet;
 
-import org.example.dao.GeneroDao;
+import org.example.dao.UsuarioDao;
 import org.example.database.Database;
-import org.example.model.Genero;
+import org.example.model.Usuario;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,19 +10,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
-@WebServlet("/add_genero")
-public class NewGeneroServlet extends HttpServlet {
+@WebServlet("/edit_usuario")
+public class EditUsuarioServlet extends HttpServlet {
 
     private ArrayList<String> errors;
 
     @Override
-    public void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
 
@@ -32,29 +31,34 @@ public class NewGeneroServlet extends HttpServlet {
 
         }
 
-        if (!validate(request)) {
-            response.getWriter().print(errors.toString());
+        if (!validate(request)){
+            response.getWriter().println(errors.toString());
             return;
         }
-
+        int id = Integer.parseInt(request.getParameter("id"));
         String nombre = request.getParameter("nombre");
-        String descripcion = request.getParameter("descripcion");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String role = request.getParameter("role");
 
         try{
-            Database database = new Database();
-            database.connect();
-            GeneroDao generoDao = new GeneroDao(database.getConnection());
-            Genero genero = new Genero();
-            genero.setNombre(nombre);
-            genero.setDescripcion(descripcion);
+            Database datababase = new Database();
+            datababase.connect();
+            UsuarioDao usuarioDao = new UsuarioDao(datababase.getConnection());
+            Usuario usuario = new Usuario();
+            usuario.setId(id);
+            usuario.setNombre(nombre);
+            usuario.setEmail(email);
+            usuario.setPassword(password);
+            usuario.setRole(role);
 
-            boolean added = generoDao.add(genero);
-            if (added) {
+
+            boolean edited = usuarioDao.edit(usuario);
+            if (edited) {
                 response.getWriter().print("ok");
-            }else{
-                response.getWriter().print("No se ha podido registrar el género");
+            } else {
+                response.getWriter().print("No se ha podido actualizar el usuario");
             }
-
         } catch (SQLException sqle){
             try{
                 response.getWriter().println("No se ha podido conectar con la base de datos");
@@ -64,20 +68,26 @@ public class NewGeneroServlet extends HttpServlet {
                 ioe.printStackTrace();
             }
             sqle.printStackTrace();
-        } catch (IOException ioe){
+        }catch (IOException ioe){
             ioe.printStackTrace();
         }catch (ClassNotFoundException cnfe){
             cnfe.printStackTrace();
         }
     }
 
-    private boolean validate (HttpServletRequest request){
+    private boolean validate(HttpServletRequest request){
         errors = new ArrayList<>();
         if (request.getParameter("nombre").isEmpty()){
             errors.add("El nombre es obligatorio");
         }
-        if (request.getParameter("descripcion").isEmpty()){
-            errors.add("La descripcion es obligatoria");
+        if (request.getParameter("email").isEmpty()){
+            errors.add("El email es obligatorio");
+        }
+        if (request.getParameter("password").isEmpty()){
+            errors.add("La contraseña es obligatoria");
+        }
+        if (request.getParameter("role").isEmpty()){
+            errors.add("Seleccione un rol");
         }
         return errors.isEmpty();
     }

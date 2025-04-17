@@ -19,7 +19,7 @@
     <div class="col-md-7">
       <div class="card shadow-lg rounded-2">
         <div class="card-header bg-black text-white text-center">
-          <h3 class="mb-0">Ficha del Género</h3>
+          <h3 class="mb-0">Detalle del Género</h3>
         </div>
         <div class="card-body p-4">
           <p><strong>Nombre:</strong> <%= genero.getNombre() %></p>
