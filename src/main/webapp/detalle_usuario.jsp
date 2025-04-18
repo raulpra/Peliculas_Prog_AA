@@ -38,7 +38,7 @@
                   %>
                     <a href="usuarios.jsp" class="btn btn-secondary btn-sm">Volver</a>
                     <a href="edit_usuario.jsp?usuario_id=<%=usuario.getId()%>" class="btn btn-warning btn-sm">Editar</a>
-                    <a href="delete_usuario?usuario_id=<%=usuario.getId()%>" class="btn btn-danger btn-sm">Eliminar</a>
+                    <a href="delete_usuario?usuario_id=<%=usuario.getId()%>" class="btn btn-danger btn-sm" onclick="return confirmar()">Eliminar</a>
                 <%
                   }
                 %>
@@ -55,4 +55,6 @@
 <%
   }
 %>
+<script src="./scripts/script_confirmacion.js"></script>
+
 <%@include file="includes/footer.jsp"%>

@@ -21,4 +21,6 @@ nav-bar {
     color: #fff ;    /* Letras blancas */
   }
 
-
+.footer {
+    margin-top: auto;
+}

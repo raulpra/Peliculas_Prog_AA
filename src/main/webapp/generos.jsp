@@ -7,7 +7,7 @@
 
 <!-- Contenido principal -->
 <div class="container mt-4 py-4" style="background-color: #ffffff ">
-    <h1>Bienvenido a Explorer Cinema</h1>
+    <h1>Descubre todos los géneros disponibles</h1>
     <p>Explora películas, géneros, y accede a más funciones al iniciar sesión.</p>
     <% if (role.equals("admin")){
     %>
@@ -26,13 +26,15 @@
             for (Genero genero : generoList){
         %>
 
-        <div class="col">
-            <div class="card shadow-lg rounded-3" style="width: 22rem; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <div class="col card-paginacion">
+            <div class="card shadow-lg rounded-3 h-100 d-flex flex-column " style="width: 22rem; transition: transform 0.3s ease, box-shadow 0.3s ease;">
                 <img src="images/film2.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
+                <div class="card-body d-flex flex-column ">
                     <h5 class="card-title"><%= genero.getNombre() %></h5>
-                    <p class="card-text"><%= genero.getDescripcion() %></p>
-                    <a href="detalle_genero.jsp?genero_id=<%=genero.getId() %>" class="btn btn-secondary btn-sm">Detalles</a>
+                    <p class="card-text flex-grow-1"><%= genero.getDescripcion() %></p>
+                    <div class = "mt-auto">
+                        <a href="detalle_genero.jsp?genero_id=<%=genero.getId() %>" class="btn btn-secondary btn-sm">Detalles</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -40,5 +42,14 @@
             }
         %>
     </div>
+</div>
+
+<div class="d-flex justify-content-center mt-4">
+    <button id="btn_anterior" class="btn btn-outline-secondary  me-1">Anterior</button>
+    <button id="btn_siguiente" class="btn btn-outline-secondary">Siguiente</button>
+</div>
+
+<script src="./scripts/script_paginacion.js"></script>
+
 
 <%@include file="includes/footer.jsp"%>

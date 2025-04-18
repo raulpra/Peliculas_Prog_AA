@@ -40,7 +40,7 @@
                 if (role.equals("admin")){
             %>
             <a href="edit_pelicula.jsp?pelicula_id=<%=pelicula.getId()%>" class="btn btn-warning btn-sm">Modificar</a>
-            <a href="delete_pelicula?pelicula_id=<%=pelicula.getId()%>" class="btn btn-danger btn-sm">Eliminar</a>
+            <a href="delete_pelicula?pelicula_id=<%=pelicula.getId()%>" class="btn btn-danger btn-sm" onclick="return confirmar()">Eliminar</a>
             <%
                 }
             %>
@@ -55,5 +55,6 @@
 <%
 }
 %>
+<script src="./scripts/script_confirmacion.js"></script>
 
 <%@include file="includes/footer.jsp"%>
