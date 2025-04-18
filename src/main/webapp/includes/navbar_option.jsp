@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!-- Segunda barra de navegación -->
-  <nav class="navbar navbar-expand-lg px-3 py-2 bg-dark border-bottom">
+  <nav class="navbar navbar-expand-lg px-3 py-1 bg-dark border-bottom">
     <div class="container d-flex justify-content-center">
       <ul class="navbar-nav flex-row gap-4">
         <li class="nav-item">

@@ -22,8 +22,8 @@
 
                 for (Pelicula pelicula : favoritosList) {
         %>
-    <div class="col">
-        <div class="card shadow-lg rounded-3" style="width: 22rem">
+    <div class="col card-paginacion">
+        <div class="card shadow-lg rounded-3 h-100" style="width: 22rem">
 
             <img src="images/film2.jpg" class="card-img-top" alt="...">
             <img src="../peliculas-images/<%=pelicula.getImagen() %>" class="card-img-top" alt="...">
@@ -48,3 +48,12 @@
     %>
     </div>
 </div>
+
+<div class="d-flex justify-content-center mt-4">
+    <button id="btn_anterior" class="btn btn-outline-secondary  me-1">Anterior</button>
+    <button id="btn_siguiente" class="btn btn-outline-secondary">Siguiente</button>
+</div>
+
+<script src="./scripts/script_paginacion.js"></script>
+
+<%@include file="includes/footer.jsp"%>
