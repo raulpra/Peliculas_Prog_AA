@@ -31,6 +31,9 @@ public class GeneroDao {
             genero.setId(result.getInt("id"));
             genero.setNombre(result.getString("nombre"));
             genero.setDescripcion(result.getString("descripcion"));
+            genero.setEjemplos(result.getString("ejemplos"));
+            genero.setFechaAgregado(result.getDate("fecha_agregado"));
+            genero.setActivo(result.getBoolean("activo"));
 
             generoArrayList.add(genero);
         }
@@ -38,7 +41,6 @@ public class GeneroDao {
 
         return generoArrayList;
     }
-
 
     public Genero getGenero(int generoId) throws SQLException, GeneroNotFoundException {
         String sentenciasql = "SELECT * FROM generos WHERE id = ?";
@@ -56,6 +58,9 @@ public class GeneroDao {
         genero.setId(result.getInt("id"));
         genero.setNombre(result.getString("nombre"));
         genero.setDescripcion(result.getString("descripcion"));
+        genero.setEjemplos(result.getString("ejemplos"));
+        genero.setFechaAgregado(result.getDate("fecha_agregado"));
+        genero.setActivo(result.getBoolean("activo"));
 
         statement.close();
 
@@ -64,12 +69,15 @@ public class GeneroDao {
     }
 
     public boolean add(Genero genero) throws SQLException {
-        String sentenciasql = "INSERT INTO generos (nombre, descripcion) VALUES (?,?)";
+        String sentenciasql = "INSERT INTO generos (nombre, descripcion, ejemplos, fecha_agregado, activo) VALUES (?,?,?,?,?)";
         PreparedStatement statement = null;
 
         statement = connection.prepareStatement(sentenciasql);
         statement.setString(1,genero.getNombre());
         statement.setString(2, genero.getDescripcion());
+        statement.setString(3, genero.getEjemplos());
+        statement.setDate(4, genero.getFechaAgregado());
+        statement.setBoolean(5, genero.isActivo());
 
         int affectedRows = statement.executeUpdate();
 
@@ -77,13 +85,16 @@ public class GeneroDao {
     }
 
     public boolean update(Genero genero) throws SQLException {
-        String sentinciasql = "UPDATE generos SET nombre = ?, descripcion = ? WHERE id = ?";
+        String sentinciasql = "UPDATE generos SET nombre = ?, descripcion = ?, ejemplos = ?, fecha_agregado = ?, activo = ? WHERE id = ?";
         PreparedStatement statement = null;
         statement = connection.prepareStatement(sentinciasql);
 
         statement.setString(1,genero.getNombre());
         statement.setString(2, genero.getDescripcion());
-        statement.setInt(3, genero.getId());
+        statement.setString(3, genero.getEjemplos());
+        statement.setDate(4, genero.getFechaAgregado());
+        statement.setBoolean(5, genero.isActivo());
+        statement.setInt(6, genero.getId());
 
         int affectedRows = statement.executeUpdate();
 

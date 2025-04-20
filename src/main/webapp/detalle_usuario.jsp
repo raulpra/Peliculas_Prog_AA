@@ -23,9 +23,17 @@
                 </div>
                 <div class="card-body p-4">
                     <p><strong>Nombre:</strong> <%= usuario.getNombre() %></p>
+                    <p><strong>Apellidos:</strong> <%= usuario.getApellido() %></p>
+                    <p><strong>Fecha Nacimiento:</strong> <%= usuario.getFechaNacimiento() %></p>
+                    <p><strong>Edad:</strong> <%= usuario.getEdad() %></p>
                     <p><strong>Email:</strong> <%= usuario.getEmail() %></p>
+                    <% if (role.equals ("admin")){
+                    %>
                     <p><strong>Rol:</strong> <%= usuario.getRole() %></p>
-
+                    <p><strong>Activo:</strong> <%= usuario.isActivo() ? "SI" : "No" %></p>
+                    <p><strong>Valoración:</strong> <%= usuario.getValoracion() %></p>
+                    <% }
+                    %>
                 </div>
                 <div class="card-footer text-end">
                   <% if (role.equals("usuario")){
@@ -38,7 +46,7 @@
                   %>
                     <a href="usuarios.jsp" class="btn btn-secondary btn-sm">Volver</a>
                     <a href="edit_usuario.jsp?usuario_id=<%=usuario.getId()%>" class="btn btn-warning btn-sm">Editar</a>
-                    <a href="delete_usuario?usuario_id=<%=usuario.getId()%>" class="btn btn-danger btn-sm" onclick="return confirmar()">Eliminar</a>
+                    <a href="delete_usuario?usuario_id=<%=usuario.getId()%>" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar permanentemente?')">Eliminar</a>
                 <%
                   }
                 %>
@@ -55,6 +63,5 @@
 <%
   }
 %>
-<script src="./scripts/script_confirmacion.js"></script>
 
 <%@include file="includes/footer.jsp"%>

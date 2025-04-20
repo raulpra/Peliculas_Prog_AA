@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -37,9 +38,15 @@ public class NewUsuarioServlet extends HttpServlet {
         }
 
         String nombre = request.getParameter("nombre");
+        String apellido = request.getParameter("apellido");
+        String fechaNacimiento = request.getParameter("fecha_nacimiento");
+        Date fecha = Date.valueOf(fechaNacimiento);
+        String edad = request.getParameter("edad");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String role = request.getParameter("role");
+        Boolean activo = Boolean.parseBoolean(request.getParameter("activo"));
+        String valoracion = request.getParameter("valoracion");
 
         try{
             Database database = new Database();
@@ -47,9 +54,14 @@ public class NewUsuarioServlet extends HttpServlet {
             UsuarioDao usuarioDao = new UsuarioDao(database.getConnection());
             Usuario usuario = new Usuario();
             usuario.setNombre(nombre);
+            usuario.setApellido(apellido);
+            usuario.setFechaNacimiento(fecha);
+            usuario.setEdad(Integer.parseInt(edad));
             usuario.setEmail(email);
             usuario.setPassword(password);
             usuario.setRole(role);
+            usuario.setActivo(activo);
+            usuario.setValoracion(Float.parseFloat(valoracion));
 
             boolean added = usuarioDao.addUsuario(usuario);
             if (added) {

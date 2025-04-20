@@ -47,9 +47,14 @@ public class UsuarioDao {
         Usuario usuario = new Usuario();
         usuario.setId(result.getInt("id"));
         usuario.setNombre(result.getString("nombre"));
+        //usuario.setApellido(result.getString("apellido"));
+        //usuario.setEmail(result.getString("fecha_nacimiento"));
+        //usuario.setPassword(result.getString("edad"));
         usuario.setEmail(result.getString("email"));
         usuario.setPassword(result.getString("password"));
         usuario.setRole(result.getString("role"));
+        //usuario.setActivo(result.getBoolean("activo"));
+        //usuario.setValoracion(result.getFloat("valoracion"));
         return usuario;
     }
 
@@ -66,9 +71,14 @@ public class UsuarioDao {
             Usuario usuario = new Usuario();
             usuario.setId(result.getInt("id"));
             usuario.setNombre(result.getString("nombre"));
+            usuario.setApellido(result.getString("apellido"));
+            usuario.setFechaNacimiento(result.getDate("fecha_nacimiento"));
+            usuario.setEdad(result.getInt("edad"));
             usuario.setEmail(result.getString("email"));
             usuario.setPassword(result.getString("password"));
             usuario.setRole(result.getString("role"));
+            usuario.setActivo(result.getBoolean("activo"));
+            usuario.setValoracion(result.getFloat("valoracion"));
             usuarioList.add(usuario);
         }
         statement.close();
@@ -92,9 +102,14 @@ public class UsuarioDao {
         Usuario usuario = new Usuario();
         usuario.setId(result.getInt("id"));
         usuario.setNombre(result.getString("nombre"));
+        usuario.setApellido(result.getString("apellido"));
+        usuario.setFechaNacimiento(result.getDate("fecha_nacimiento"));
+        usuario.setEdad(result.getInt("edad"));
         usuario.setEmail(result.getString("email"));
         usuario.setPassword(result.getString("password"));
         usuario.setRole(result.getString("role"));
+        usuario.setActivo(result.getBoolean("activo"));
+        usuario.setValoracion(result.getFloat("valoracion"));
 
         statement.close();
 
@@ -102,14 +117,19 @@ public class UsuarioDao {
     }
 
     public boolean addUsuario (Usuario usuario) throws SQLException {
-        String sql = "INSERT INTO usuarios (nombre, email, password, role) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO usuarios (nombre, apellido, fecha_nacimiento, edad, email, password, role, activo, valoracion) VALUES (?,?,?,?,?,?,?,?,?)";
         PreparedStatement statement = null;
 
         statement = connection.prepareStatement(sql);
         statement.setString(1, usuario.getNombre());
-        statement.setString(2, usuario.getEmail());
-        statement.setString(3, usuario.getPassword());
-        statement.setString(4,usuario.getRole());
+        statement.setString(2, usuario.getApellido());
+        statement.setDate(3, usuario.getFechaNacimiento());
+        statement.setInt(4, usuario.getEdad());
+        statement.setString(5, usuario.getEmail());
+        statement.setString(6, usuario.getPassword());
+        statement.setString(7,usuario.getRole());
+        statement.setBoolean(8,usuario.isActivo());
+        statement.setFloat(9,usuario.getValoracion());
 
         int affectedRows = statement.executeUpdate();
 
@@ -117,15 +137,20 @@ public class UsuarioDao {
     }
 
     public boolean edit (Usuario usuario) throws SQLException {
-        String sentenciasql = "UPDATE usuarios SET nombre = ?, email = ?, password = ?, role = ? WHERE id = ?";
+        String sentenciasql = "UPDATE usuarios SET nombre = ?, apellido = ?, fecha_nacimiento = ?, edad = ?, email = ?, password = ?, role = ?, activo = ?, valoracion = ? WHERE id = ?";
         PreparedStatement statement = null;
         statement = connection.prepareStatement(sentenciasql);
 
         statement.setString(1, usuario.getNombre());
-        statement.setString(2, usuario.getEmail());
-        statement.setString(3, usuario.getPassword());
-        statement.setString(4, usuario.getRole());
-        statement.setInt(5, usuario.getId());
+        statement.setString(2, usuario.getApellido());
+        statement.setDate(3, usuario.getFechaNacimiento());
+        statement.setInt(4, usuario.getEdad());
+        statement.setString(5, usuario.getEmail());
+        statement.setString(6, usuario.getPassword());
+        statement.setString(7, usuario.getRole());
+        statement.setBoolean(8, usuario.isActivo());
+        statement.setFloat(9, usuario.getValoracion());
+        statement.setInt(10, usuario.getId());
 
         int affectedRows = statement.executeUpdate();
 

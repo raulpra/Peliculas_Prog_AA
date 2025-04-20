@@ -52,6 +52,18 @@
             <input type="text" class="form-control" id="nombre" name="nombre" >
         </div>
         <div class="mb-3">
+            <label for="apellido" class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="apellido" name="apellido">
+        </div>
+        <div class="mb-3">
+            <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label>
+            <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" required>
+        </div>
+        <div class="mb-3">
+            <label for="edad" class="form-label">Edad</label>
+            <input type="number" step="1" min="0" max="100" class="form-control" id="edad" name="edad" required>
+        </div>
+        <div class="mb-3">
             <label for="email" class="form-label">Correo Electrónico</label>
             <input type="email" class="form-control" id="email" name="email" required>
         </div>
@@ -67,10 +79,22 @@
                 <option value="usuario">Usuario</option>
             </select>
         </div>
+        <div class="mb-3">
+            <label for="activo" class="form-label">Activo</label>
+            <select class="form-select" id="activo" name="activo" required>
+                <option disabled value="">Seleccione una opción</option>
+                <option value="true" >Si</option>
+                <option value="false">No</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="valoracion" class="form-label">Valoración (0.0 - 10.0)</label>
+            <input type="number" step="0.1" min="0" max="10" class="form-control" id="valoracion" name="valoracion" required>
+        </div>
 
         <input class="btn btn-primary" type="submit" value="Registrar">
         <!--<button type="submit" class="btn btn-primary">Guardar Usuario</button>-->
-        <a href="index.jsp" class="btn btn-secondary ms-2">Cancelar</a>
+        <a href="usuarios.jsp" class="btn btn-secondary ms-2">Cancelar</a>
 
         <div id="result"></div>
     </form>

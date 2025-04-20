@@ -14,6 +14,11 @@
 <div class="container mt-4 py-4" style="background-color: #ffffff ">
     <div class="container mt-5">
         <h2 class="mb-4">Gestión de Usuarios</h2>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <form class="d-flex mb-4" role="search" style="max-width: 350px; width: 100%;">
+                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+            </form>
         <% if (role.equals("admin")){
         %>
             <div class="container d-flex justify-content-end py-3">
@@ -22,10 +27,12 @@
         <%
             }
         %>
+        </div>
         <table class="table table-striped table-bordered align-middle shadow-sm rounded-3">
             <thead class="table-dark">
             <tr>
                 <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
                 <th scope="col">Email</th>
                 <th scope="col">Rol</th>
                 <th scope="col">Acciones</th>
@@ -42,6 +49,7 @@
             %>
             <tr>
                 <td><%= usuario.getNombre() %></td>
+                <td><%= usuario.getApellido() %></td>
                 <td><%= usuario.getEmail() %></td>
                 <td><%= usuario.getRole() %></td>
                 <td>

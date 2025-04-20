@@ -52,6 +52,7 @@ public class EditPeliculaServlet extends HttpServlet {
         String puntuacion = request.getParameter("puntuacion");
         String genero = request.getParameter("id_genero");
         Part image = request.getPart("imagen");
+        boolean disponible = Boolean.parseBoolean(request.getParameter("disponible"));
 
         try {
             Database database = new Database();
@@ -64,6 +65,7 @@ public class EditPeliculaServlet extends HttpServlet {
             pelicula.setFechaEstreno(fecha);
             pelicula.setPuntuacion(Float.parseFloat(puntuacion));
             pelicula.setGenero(genero);
+            pelicula.setDisponible(disponible);
             pelicula.setId(id);
     /*
             String filename = "film.jpg";

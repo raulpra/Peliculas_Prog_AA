@@ -19,7 +19,7 @@
     <div class="card mb-3" style="max-width: 900px; width: 100%; min-height: 500px;">
         <div class="row g-0 h-100">
             <div class="col-md-6">
-                <img src="images/film2.jpg" class="img-fluid rounded-start h-100 w-100 object-fit-cover" alt="Imagen película" style="object-fit: cover;">
+                <img src="images/<%=pelicula.getImagen()%>" class="img-fluid rounded-start h-100 w-100 object-fit-cover" alt="Imagen película" style="object-fit: cover;">
             </div>
 
             <div class="col-md-6 d-flex align-items-center">
@@ -28,8 +28,9 @@
                     <p class="card-text"><strong>Director:</strong> <%=pelicula.getDirector()%></p>
                     <p class="card-text"><strong>Fecha de estreno:</strong> <%=pelicula.getFechaEstreno()%></p>
                     <p class="card-text"><strong>Género:</strong> <%=pelicula.getGenero()%></p>
-                    <p class="card-text"><strong>Puntuación:</strong> <%=pelicula.getPuntuacion()%></p>
+                    <p class="card-text"><strong>Puntuación: <i class="bi bi-star-fill" style="color:gold"> </i></strong> <%=pelicula.getPuntuacion()%>/10</p>
                     <p class="card-text"><strong>Sinopsis:</strong> <%=pelicula.getSinopsis()%> </p>
+                    <p class="card-text"><strong>Disponible en cines:</strong> <%=pelicula.isDisponible() ? "Disponible" : "Descatalogada"%> </p>
                 </div>
             </div>
 
@@ -40,7 +41,7 @@
                 if (role.equals("admin")){
             %>
             <a href="edit_pelicula.jsp?pelicula_id=<%=pelicula.getId()%>" class="btn btn-warning btn-sm">Modificar</a>
-            <a href="delete_pelicula?pelicula_id=<%=pelicula.getId()%>" class="btn btn-danger btn-sm" onclick="return confirmar()">Eliminar</a>
+            <a href="delete_pelicula?pelicula_id=<%=pelicula.getId()%>" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar permanentemente?')">Eliminar</a>
             <%
                 }
             %>
@@ -55,6 +56,5 @@
 <%
 }
 %>
-<script src="./scripts/script_confirmacion.js"></script>
 
 <%@include file="includes/footer.jsp"%>

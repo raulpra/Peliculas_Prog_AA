@@ -11,7 +11,7 @@
 %>
 
 <div class="container mt-4 py-4" style="background-color: #ffffff ">
-    <h1 class="mb-4">Tus películas favoritas <%= currentSession.getAttribute("nombre")%> </h1>
+    <h1 class="mb-4">Tus películas favoritas <i><%= currentSession.getAttribute("nombre")%></i> </h1>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <%
 
@@ -23,23 +23,23 @@
                 for (Pelicula pelicula : favoritosList) {
         %>
     <div class="col card-paginacion">
-        <div class="card shadow-lg rounded-3 h-100" style="width: 22rem">
+        <div class="card shadow-lg rounded-3 h-100 d-flex flex-column" style="width: 22rem">
 
-            <img src="images/film2.jpg" class="card-img-top" alt="...">
-            <img src="../peliculas-images/<%=pelicula.getImagen() %>" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title"><%=pelicula.getTitulo()%></h5>
-                <h5 class="card-title"><%=pelicula.getDirector()%></h5>
-                <h5 class="card-title"><%=pelicula.getPuntuacion()%></h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="detalle_pelicula.jsp?pelicula_id=<%=pelicula.getId()%>" class="btn btn-secondary btn-sm">Detalles</a>
-                <%
-                    if (role.equals("usuario")){
-                %>
+            <img src="images/<%=pelicula.getImagen() %>" class="card-img-top"  style="height: 290px; object-fit: contain" alt="...">
+            <div class="card-body d-flex flex-column ">
+                <h4 class="card-title mb-1"><%=pelicula.getTitulo()%></h4>
+                <p class="mb-1"> <%=pelicula.getDirector()%></p>
+                <h6 class="card-title mb-1"><i class="bi bi-star-fill" style="color:gold"> </i><%=pelicula.getPuntuacion()%>/10</h6>
+                <div class= "mt-auto">
+                    <a href="detalle_pelicula.jsp?pelicula_id=<%=pelicula.getId()%>" class="btn btn-secondary btn-sm">Detalles</a>
+                    <%
+                        if (role.equals("usuario")){
+                    %>
                 <a href="delete_favoritos?pelicula_id=<%=pelicula.getId()%>" class="btn btn-primary btn-sm">Quitar favorito</a>
                 <%
                     }
                 %>
+                </div>
             </div>
         </div>
     </div>

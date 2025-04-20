@@ -100,8 +100,16 @@
             <label for="imagen" class="form-label">Imagen</label>
             <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*" required>
         </div>
-        <button type="submit" class="btn btn-primary">Guardar Película</button>
-        <a href="index.jsp" class="btn btn-secondary ms-2">Volver</a>
+        <div class="mb-3">
+            <label for="disponible" class="form-label">Disponible en cines</label>
+            <select class="form-select" id="disponible" name="disponible" required>
+                <option selected disabled value="">Selecciona una opción</option>
+                <option value="true">Disponible</option>
+                <option value="false">Descatalogada</option>
+            </select>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Registrar">
+        <a href="index.jsp" class="btn btn-secondary ms-2">Cancelar</a>
 
         <input type="hidden" name="action" value="">
 
