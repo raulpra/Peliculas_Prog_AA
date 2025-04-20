@@ -61,34 +61,59 @@
             <input type="text" class="form-control" id="nombre" name="nombre" value="<%=usuario.getNombre()%>">
         </div>
         <div class="mb-3">
+            <label for="apellido" class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="apellido" name="apellido" value="<%=usuario.getApellido()%>">
+        </div>
+        <div class="mb-3">
+            <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label>
+            <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" value="<%=usuario.getFechaNacimiento()%>" required>
+        </div>
+        <div class="mb-3">
+            <label for="edad" class="form-label">Edad</label>
+            <input type="number" step="1" min="0" max="100" class="form-control" id="edad" name="edad" value="<%=usuario.getEdad()%>" required>
+        </div>
+        <div class="mb-3">
             <label for="email" class="form-label">Correo Electrónico</label>
-
             <input type="email" class="form-control" id="email" name="email" value="<%=usuario.getEmail()%>" <%= "usuario".equals(usuario.getRole()) ? "readonly" : "" %> required>
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Contraseña</label>
             <input type="password" class="form-control" id="password" name="password" value ="<%=usuario.getPassword()%>" required>
         </div>
+        <%
+            if (role.equals("admin")) {
+        %>
         <div class="mb-3">
             <label for="role" class="form-label">Rol</label>
-            <%
-                if ("admin".equals(role)) {
-            %>
                 <select class="form-select" id="role" name="role" required>
                     <option disabled value="">Seleccione un rol</option>
                     <option value="admin" <%= "admin".equals(usuario.getRole()) ? "selected" : "" %>>Administrador</option>
                     <option value="usuario" <%= "usuario".equals(usuario.getRole()) ? "selected" : "" %>>Usuario</option>
                 </select>
-            <%
-                } else {
-            %>
-                <input type="text" class="form-control" name="role" value="<%= usuario.getRole() %>" readonly>
-            <%
-                }
-            %>
         </div>
-
-        <input class="btn btn-primary" type="submit" value="Modificar">
+        <div class="mb-3">
+            <label for="activo" class="form-label">Activo</label>
+            <select class="form-select" id="activo" name="activo" required>
+                <option disabled value="">Seleccione una opción</option>
+                <option value="true" <%= usuario.isActivo() ? "selected" : "" %>>Si</option>
+                <option value="false" <%= !usuario.isActivo() ? "selected" : "" %>>No</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="valoracion" class="form-label">Valoración (0.0 - 10.0)</label>
+            <input type="number" step="0.1" min="0" max="10" class="form-control" id="valoracion" name="valoracion" value="<%=usuario.getValoracion()%>" required>
+        </div>
+        <%
+        } else {
+        %>
+        <div class="mb-3">
+            <label for="role" class="form-label">Rol</label>
+            <input type="text" class="form-control" name="role" value="<%= usuario.getRole() %>" readonly>
+        </div>
+        <%
+            }
+        %>
+        <input class="btn btn-primary" type="submit" value="Modificar" onclick="return confirm('¿Desea confirmar?')">
         <!--<button type="submit" class="btn btn-primary">Guardar Usuario</button>-->
         <a href="detalle_usuario.jsp?usuario_id=<%=usuario.getId()%>" class="btn btn-secondary ms-2">Cancelar</a>
 

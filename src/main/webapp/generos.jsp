@@ -9,14 +9,20 @@
 <div class="container mt-4 py-4" style="background-color: #ffffff ">
     <h1>Descubre todos los géneros disponibles</h1>
     <p>Explora películas, géneros, y accede a más funciones al iniciar sesión.</p>
-    <% if (role.equals("admin")){
-    %>
-        <div class="container d-flex justify-content-end py-3">
-            <a href="add_genero.jsp" class="btn btn-success">Añadir Género</a>
-        </div>
-    <%
-    }
-    %>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <form class="d-flex mb-4" role="search" style="max-width: 350px; width: 100%;">
+            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+            <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+        </form>
+        <% if (role.equals("admin")){
+        %>
+            <div class="container d-flex justify-content-end py-3">
+                <a href="add_genero.jsp" class="btn btn-success">Añadir Género</a>
+            </div>
+        <%
+        }
+        %>
+    </div>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <%
             Database database = new Database();
@@ -30,7 +36,7 @@
             <div class="card shadow-lg rounded-3 h-100 d-flex flex-column " style="width: 22rem; transition: transform 0.3s ease, box-shadow 0.3s ease;">
                 <img src="images/film2.jpg" class="card-img-top" alt="...">
                 <div class="card-body d-flex flex-column ">
-                    <h5 class="card-title"><%= genero.getNombre() %></h5>
+                    <h3 class="card-title"><%= genero.getNombre() %></h3>
                     <p class="card-text flex-grow-1"><%= genero.getDescripcion() %></p>
                     <div class = "mt-auto">
                         <a href="detalle_genero.jsp?genero_id=<%=genero.getId() %>" class="btn btn-secondary btn-sm">Detalles</a>

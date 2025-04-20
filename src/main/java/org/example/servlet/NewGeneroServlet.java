@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -39,6 +40,10 @@ public class NewGeneroServlet extends HttpServlet {
 
         String nombre = request.getParameter("nombre");
         String descripcion = request.getParameter("descripcion");
+        String ejemplos = request.getParameter("ejemplos");
+        String fechaAgregado = request.getParameter("fecha_actualizacion");
+        Date fecha = Date.valueOf(fechaAgregado);
+        boolean activo = Boolean.parseBoolean(request.getParameter("activo"));
 
         try{
             Database database = new Database();
@@ -47,6 +52,9 @@ public class NewGeneroServlet extends HttpServlet {
             Genero genero = new Genero();
             genero.setNombre(nombre);
             genero.setDescripcion(descripcion);
+            genero.setEjemplos(ejemplos);
+            genero.setFechaAgregado(fecha);
+            genero.setActivo(activo);
 
             boolean added = generoDao.add(genero);
             if (added) {

@@ -21,6 +21,7 @@ nav-bar {
     color: #fff ;    /* Letras blancas */
   }
 
-.footer {
-    margin-top: auto;
+.img-peliculas {
+    max-height: 150px;
+    object-fit: cover;
 }

@@ -99,7 +99,6 @@
         <option selected disabled value="">Selecciona un género</option>
         <% for (Genero genero : generos) { %>
         <option value="<%= genero.getId() %>" <%=generoPelicula.equals(genero.getNombre()) ? "selected" : ""%>><%= genero.getNombre() %></option>
-
         <% } %>
       </select>
     </div>
@@ -108,7 +107,16 @@
       <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*" value="<%=pelicula.getImagen()%> ">
     </div>
 
-    <input class="btn btn-primary" type="submit" value="Modificar">
+    <div class="mb-3">
+      <label for="disponible" class="form-label">Disponible en cines</label>
+      <select class="form-select" id="disponible" name="disponible" required>
+        <option selected disabled value="">Selecciona una opción</option>
+        <option value="true" <%=pelicula.isDisponible() ? "selected" : "" %>>Disponible</option>
+        <option value="false"  <%=!pelicula.isDisponible() ? "selected" : "" %>>Descatalogada</option>
+      </select>
+    </div>
+
+    <input class="btn btn-primary" type="submit" value="Modificar" onclick="return confirm('¿Desea confirmar?')">
     <!--<button type="submit" class="btn btn-primary">Modificar</button>-->
     <a href="index.jsp" class="btn btn-secondary ms-2">Cancelar</a>
 

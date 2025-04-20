@@ -35,7 +35,7 @@
                 if (role.equals("usuario")) {
             %>
             <li class="nav-item">
-                <a class="nav-link fs-6 px-3 py-1 rounded hover-effect text-white" href="detalle_usuario.jsp?usuario_id=<%=currentSession.getAttribute("id")%>">MI PERFIL</a>
+                <a class="nav-link fs-6 px-3 py-1 rounded hover-effect text-white" href="detalle_usuario.jsp?usuario_id=<%=currentSession.getAttribute("id")%>">Mi perfil</a>
             </li>
             <%
                 }

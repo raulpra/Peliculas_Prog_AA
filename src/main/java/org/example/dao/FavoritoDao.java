@@ -3,10 +3,7 @@ package org.example.dao;
 import org.example.model.Genero;
 import org.example.model.Pelicula;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,12 +43,13 @@ public class FavoritoDao {
     }
 
     public boolean addFavorito(int usuarioId, int peliculaId) throws SQLException {
-        String sentenciasql = "INSERT INTO favoritos (id_usuario, id_pelicula) VALUES (?,?)";
+        String sentenciasql = "INSERT INTO favoritos (id_usuario, id_pelicula, fecha_agregado) VALUES (?,?,?)";
         PreparedStatement statement = null;
 
         statement = connection.prepareStatement(sentenciasql);
         statement.setInt(1,usuarioId);
         statement.setInt(2, peliculaId);
+        statement.setDate(3,new Date(System.currentTimeMillis()));
 
         int affectedRows = statement.executeUpdate();
 

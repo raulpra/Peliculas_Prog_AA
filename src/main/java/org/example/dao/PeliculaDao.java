@@ -39,6 +39,8 @@ public class PeliculaDao {
             pelicula.setGenero(result.getString("genero_nombre"));
             pelicula.setImagen(result.getString("imagen"));
             pelicula.setPuntuacion(result.getFloat("puntuacion"));
+            pelicula.setDisponible(result.getBoolean("disponible"));
+
 
             peliculaArrayList.add(pelicula);
         }
@@ -69,6 +71,7 @@ public class PeliculaDao {
         pelicula.setGenero(result.getString("genero_nombre"));
         pelicula.setImagen(result.getString("imagen"));
         pelicula.setPuntuacion(result.getFloat("puntuacion"));
+        pelicula.setDisponible(result.getBoolean("disponible"));
 
         statement.close();
 
@@ -77,7 +80,7 @@ public class PeliculaDao {
     }
 
     public boolean add (Pelicula pelicula) throws SQLException {
-        String sentenciasql = "INSERT INTO peliculas (titulo, director, sinopsis, fecha_estreno, imagen, puntuacion, id_genero) VALUES (?,?,?,?,?,?,?)";
+        String sentenciasql = "INSERT INTO peliculas (titulo, director, sinopsis, fecha_estreno, imagen, puntuacion, disponible, id_genero) VALUES (?,?,?,?,?,?,?,?)";
         PreparedStatement statement = null;
 
         statement = connection.prepareStatement(sentenciasql);
@@ -87,7 +90,8 @@ public class PeliculaDao {
         statement.setDate(4, pelicula.getFechaEstreno());
         statement.setString(5,pelicula.getImagen());
         statement.setFloat(6,pelicula.getPuntuacion());
-        statement.setString(7,pelicula.getGenero());
+        statement.setBoolean(7,pelicula.isDisponible());
+        statement.setString(8,pelicula.getGenero());
 
         int affectedRows = statement.executeUpdate();
 
@@ -95,7 +99,7 @@ public class PeliculaDao {
     }
 
     public boolean update (Pelicula pelicula) throws SQLException {
-        String sentenciasql = "UPDATE peliculas SET titulo = ?, director = ?, sinopsis = ?, fecha_estreno = ?, puntuacion = ?, id_genero = ? WHERE id = ?";
+        String sentenciasql = "UPDATE peliculas SET titulo = ?, director = ?, sinopsis = ?, fecha_estreno = ?, puntuacion = ?, disponible = ?, id_genero = ? WHERE id = ?";
 
         PreparedStatement statement = null;
         statement = connection.prepareStatement(sentenciasql);
@@ -104,8 +108,9 @@ public class PeliculaDao {
         statement.setString(3, pelicula.getSinopsis());
         statement.setDate(4, pelicula.getFechaEstreno());
         statement.setFloat(5, pelicula.getPuntuacion());
-        statement.setString(6, pelicula.getGenero());
-        statement.setInt(7, pelicula.getId());
+        statement.setBoolean(6, pelicula.isDisponible());
+        statement.setString(7, pelicula.getGenero());
+        statement.setInt(8, pelicula.getId());
 
         int affectedRows = statement.executeUpdate();
 

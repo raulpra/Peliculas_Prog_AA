@@ -54,9 +54,24 @@
             <label for="descripcion" class="form-label">Descripción</label>
             <input type="text" class="form-control" id="descripcion" name="descripcion" required>
         </div>
-
-        <button type="submit" class="btn btn-primary">Guardar Género</button>
-        <a href="index.jsp" class="btn btn-secondary ms-2">Volver</a>
+        <div class="mb-3">
+            <label for="ejemplos" class="form-label">Ejemplos :</label>
+            <input type="text" class="form-control" id="ejemplos" name="ejemplos" required>
+        </div>
+        <div class="mb-3">
+            <label for="fecha_actualizacion" class="form-label">Fecha de actualización</label>
+            <input type="date" class="form-control" id="fecha_actualizacion" name="fecha_actualizacion" required>
+        </div>
+        <div class="mb-3">
+            <label for="activo" class="form-label">Activo</label>
+            <select class="form-select" id="activo" name="activo" required>
+                <option disabled value="">Seleccione una opción</option>
+                <option value="true" >Si</option>
+                <option value="false">No</option>
+            </select>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Registrar">
+        <a href="generos.jsp" class="btn btn-secondary ms-2">Cancelar</a>
 
         <div id="result"></div>
     </form>

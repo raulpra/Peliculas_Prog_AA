@@ -8,7 +8,7 @@
   <div class="container mt-4 py-4" style="background-color: #ffffff ">
         <% if (name != null){
         %>
-        <h1>Bienvenido a Explorer Cinema <%= currentSession.getAttribute("nombre")%></h1>
+      <h1>Bienvenido a Explorer Cinema <i><%= currentSession.getAttribute("nombre")%> </i></h1>
         <%
             }else{
         %>
@@ -17,14 +17,20 @@
             }
         %>
         <p>Explora películas, géneros, y guarda tus peliculas favoritas al iniciar sesión.</p>
-        <% if (role.equals("admin")){
-        %>
-            <div class="container d-flex justify-content-end py-3">
-                <a href="add_pelicula.jsp" class="btn btn-success">Añadir Película</a>
-            </div>
-        <%
-            }
-        %>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <form class="d-flex mb-4" role="search" style="max-width: 350px; width: 100%;">
+                  <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                  <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+            </form>
+            <% if (role.equals("admin")){
+            %>
+                <div class="container d-flex justify-content-end mt-1 py-3">
+                    <a href="add_pelicula.jsp" class="btn btn-success">Añadir Película</a>
+                </div>
+            <%
+                }
+            %>
+        </div>
         <div class="row row-cols-1 row-cols-md-3 g-4">
         <%
             Database database = new Database();
@@ -36,13 +42,12 @@
             <div class="col card-paginacion">
                 <div class="card shadow-lg rounded-3 h-100 d-flex flex-column" style="width: 22rem">
 
-                    <img src="images/film2.jpg" class="card-img-top" alt="...">
-                    <img src="../peliculas-images/<%=pelicula.getImagen() %>" class="card-img-top" alt="...">
-                    <div class="card-body d-flex flex-column">
-                       <h5 class="card-title"><%=pelicula.getTitulo()%></h5>
-                       <h5 class="card-title"><%=pelicula.getDirector()%></h5>
-                       <h5 class="card-title"><%=pelicula.getPuntuacion()%></h5>
-                       <p class="card-text"><%=pelicula.getSinopsis()%></p>
+                   <!-- <img src="images/film2.jpg" class="card-img-top" alt="..."> -->
+                    <img src="images/<%=pelicula.getImagen() %>" class="card-img-top"  style="height: 290px; object-fit: contain" alt="...">
+                    <div class="card-body d-flex flex-column ">
+                       <h4 class="card-title mb-1"><%=pelicula.getTitulo()%></h4>
+                       <p class="mb-1"> <%=pelicula.getDirector()%></p>
+                       <h6 class="card-title mb-1"><i class="bi bi-star-fill" style="color:gold"> </i><%=pelicula.getPuntuacion()%>/10</h6>
                         <div class= "mt-auto">
                            <a href="detalle_pelicula.jsp?pelicula_id=<%=pelicula.getId()%>" class="btn btn-secondary btn-sm">Detalles</a>
                            <%

@@ -24,6 +24,13 @@
                 <div class="card-body p-4">
                     <p><strong>Nombre:</strong> <%= genero.getNombre() %></p>
                     <p><strong>Descripción:</strong> <%= genero.getDescripcion() %></p>
+                    <p><strong>Ejemplos:</strong> <%= genero.getEjemplos() %></p>
+                    <p><strong>Fecha Actulización:</strong> <%= genero.getFechaAgregado() %></p>
+                    <% if (role.equals ("admin")){
+                    %>
+                    <p><strong>Activo:</strong> <%= genero.isActivo() ? "SI" : "No" %></p>
+                    <% }
+                    %>
                 </div>
                 <div class="card-footer text-end">
                     <a href="generos.jsp" class="btn btn-secondary btn-sm">Volver</a>
@@ -31,7 +38,7 @@
                         if (role.equals("admin")){
                     %>
                         <a href="edit_genero.jsp?genero_id=<%= genero.getId() %>" class="btn btn-warning btn-sm">Editar</a>
-                        <a href="delete_genero?genero_id=<%= genero.getId() %>" class="btn btn-danger btn-sm" onclick="return confirmar()">Eliminar</a>
+                        <a href="delete_genero?genero_id=<%= genero.getId() %>" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar permanentemente?')">Eliminar</a>
                     <%
                         }
                     %>
@@ -48,6 +55,5 @@
 <%
   }
 %>
-<script src="./scripts/script_confirmacion.js"></script>
 
 <%@include file="includes/footer.jsp"%>

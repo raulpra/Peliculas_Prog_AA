@@ -15,5 +15,5 @@ public class Pelicula {
     private String genero;
     private String imagen;
     private float puntuacion;
-
+    private boolean disponible;
 }
