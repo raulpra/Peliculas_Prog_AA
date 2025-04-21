@@ -115,6 +115,9 @@ public class NewPeliculaServlet extends HttpServlet {
         if (request.getParameter("id_genero").isEmpty()) {
             errors.add("Seleccione un genero");
         }
+        if (request.getParameter("disponible").isEmpty()) {
+            errors.add("Seleccione una opción");
+        }
         return errors.isEmpty();
     }
 }

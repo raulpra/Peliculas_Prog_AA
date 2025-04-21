@@ -16,12 +16,28 @@ public class GeneroDao {
         this.connection = connection;
     }
 
-    public ArrayList<Genero> getAllGeneros() throws SQLException {
+    public ArrayList<Genero> getAllGeneros() throws SQLException, GeneroNotFoundException {
         String sentenciasql = "SELECT * FROM generos";
+        return launchQuery(sentenciasql);
+    }
+
+    public ArrayList<Genero> getAllGeneros(String search) throws SQLException, GeneroNotFoundException {
+        String sentenciasql = "SELECT * FROM generos WHERE nombre LIKE ? OR descripcion LIKE ?";
+        if (search == null || search.isEmpty()) {
+            return getAllGeneros();
+        }
+        return launchQuery(sentenciasql, search);
+    }
+
+    private ArrayList<Genero> launchQuery (String sentenciasql, String ...search) throws SQLException {
         PreparedStatement statement = null;
         ResultSet result = null;
 
         statement = connection.prepareStatement(sentenciasql);
+        if (search.length > 0){
+            statement.setString(1, "%" + search[0] + "%");
+            statement.setString(2, "%" + search[0] + "%");
+        }
         result = statement.executeQuery();
 
         ArrayList<Genero> generoArrayList = new ArrayList<>();

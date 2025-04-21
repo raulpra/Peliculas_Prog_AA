@@ -19,7 +19,7 @@
     <div class="card mb-3" style="max-width: 900px; width: 100%; min-height: 500px;">
         <div class="row g-0 h-100">
             <div class="col-md-6">
-                <img src="images/<%=pelicula.getImagen()%>" class="img-fluid rounded-start h-100 w-100 object-fit-cover" alt="Imagen película" style="object-fit: cover;">
+                <img src="../peliculas-images/<%=pelicula.getImagen() %>" class="img-fluid rounded-start h-100 w-100 object-fit-cover" alt="Imagen película" style="object-fit: cover;">
             </div>
 
             <div class="col-md-6 d-flex align-items-center">

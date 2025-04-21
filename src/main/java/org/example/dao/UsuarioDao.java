@@ -16,6 +16,7 @@ public class UsuarioDao {
     public UsuarioDao(Connection connection) {
         this.connection = connection;
     }
+    //Login que solo devuelve el role
 /*
     public String loginUsers (String email, String password) throws SQLException, UsuarioNotFoundException {
 
@@ -58,12 +59,29 @@ public class UsuarioDao {
         return usuario;
     }
 
-
-    public ArrayList<Usuario> getUsuarios() throws SQLException, UsuarioNotFoundException {
+    public ArrayList<Usuario> getUsuarios() throws SQLException, UsuarioNotFoundException{
         String sql = "SELECT * FROM usuarios";
+        return launchQuery(sql);
+    }
+
+    public ArrayList<Usuario> getUsuarios(String search) throws SQLException, UsuarioNotFoundException {
+        String sql = "SELECT * FROM usuarios WHERE email LIKE ? OR role LIKE ? OR nombre LIKE ?";
+        if (search == null || search.isEmpty()) {
+            return getUsuarios();
+        }
+        return launchQuery(sql, search);
+    }
+
+    private ArrayList<Usuario> launchQuery(String sql, String ...search) throws SQLException {
         PreparedStatement statement = null;
+        ResultSet result = null;
         statement = connection.prepareStatement(sql);
-        ResultSet result = statement.executeQuery();
+        if (search.length > 0) {
+            statement.setString(1, "%" + search[0] + "%");
+            statement.setString(2, "%" + search[0] + "%");
+            statement.setString(3, "%" + search[0] + "%");
+        }
+        result = statement.executeQuery();
 
         ArrayList<Usuario> usuarioList = new ArrayList<>();
 

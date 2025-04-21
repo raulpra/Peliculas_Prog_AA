@@ -75,11 +75,11 @@
   <form method="post" id="pelicula-form" enctype="multipart/form-data" class="shadow p-4 bg-white rounded">
     <div class="mb-3">
       <label for="titulo" class="form-label">Título</label>
-      <input type="text" class="form-control" id="titulo" name="titulo" value="<%=pelicula.getTitulo()%>" required>
+      <input type="text" class="form-control" id="titulo" name="titulo" value="<%=pelicula.getTitulo()%>">
     </div>
     <div class="mb-3">
       <label for="director" class="form-label">Director</label>
-      <input type="text" class="form-control" id="director" name="director" value="<%=pelicula.getDirector()%>" required>
+      <input type="text" class="form-control" id="director" name="director" value="<%=pelicula.getDirector()%>">
     </div>
     <div class="mb-3">
       <label for="sinopsis" class="form-label">Sinopsis</label>
@@ -87,7 +87,7 @@
     </div>
     <div class="mb-3">
       <label for="fecha_estreno" class="form-label">Fecha de Estreno</label>
-      <input type="date" class="form-control" id="fecha_estreno" name="fecha_estreno" value="<%=pelicula.getFechaEstreno()%>" required>
+      <input type="date" class="form-control" id="fecha_estreno" name="fecha_estreno" value="<%=pelicula.getFechaEstreno()%>">
     </div>
     <div class="mb-3">
       <label for="puntuacion" class="form-label">Puntuación (0.0 - 10.0)</label>
@@ -95,7 +95,7 @@
     </div>
     <div class="mb-3">
       <label for="id_genero" class="form-label">Género</label>
-      <select class="form-select" id="id_genero" name="id_genero" required>
+      <select class="form-select" id="id_genero" name="id_genero">
         <option selected disabled value="">Selecciona un género</option>
         <% for (Genero genero : generos) { %>
         <option value="<%= genero.getId() %>" <%=generoPelicula.equals(genero.getNombre()) ? "selected" : ""%>><%= genero.getNombre() %></option>

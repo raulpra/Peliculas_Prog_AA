@@ -74,18 +74,18 @@
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">Correo Electrónico</label>
-            <input type="email" class="form-control" id="email" name="email" value="<%=usuario.getEmail()%>" <%= "usuario".equals(usuario.getRole()) ? "readonly" : "" %> required>
+            <input type="email" class="form-control" id="email" name="email" value="<%=usuario.getEmail()%>" <%= "usuario".equals(usuario.getRole()) ? "readonly" : "" %> >
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="password" name="password" value ="<%=usuario.getPassword()%>" required>
+            <input type="password" class="form-control" id="password" name="password" value ="<%=usuario.getPassword()%>" >
         </div>
         <%
             if (role.equals("admin")) {
         %>
         <div class="mb-3">
             <label for="role" class="form-label">Rol</label>
-                <select class="form-select" id="role" name="role" required>
+                <select class="form-select" id="role" name="role" >
                     <option disabled value="">Seleccione un rol</option>
                     <option value="admin" <%= "admin".equals(usuario.getRole()) ? "selected" : "" %>>Administrador</option>
                     <option value="usuario" <%= "usuario".equals(usuario.getRole()) ? "selected" : "" %>>Usuario</option>

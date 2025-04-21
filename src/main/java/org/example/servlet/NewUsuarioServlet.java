@@ -22,18 +22,16 @@ public class NewUsuarioServlet extends HttpServlet {
 
     @Override
     public void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
 
         HttpSession currentSession = request.getSession();
         if (currentSession.getAttribute("role") == null) {
             response.sendRedirect("/peliculas_app/login.jsp");
-
         }
 
         if (!validate(request)) {
-            response.getWriter().println(errors.toString());
+            response.getWriter().print(errors.toString());
             return;
         }
 
@@ -66,7 +64,7 @@ public class NewUsuarioServlet extends HttpServlet {
             boolean added = usuarioDao.addUsuario(usuario);
             if (added) {
                 response.getWriter().print("ok");
-            }else {
+            } else {
                 response.getWriter().print("No se ha podido registrar el usuario");
             }
         } catch (SQLException sqle){
@@ -98,6 +96,9 @@ public class NewUsuarioServlet extends HttpServlet {
         }
         if (request.getParameter("role").isEmpty()){
             errors.add("Seleccione un rol");
+        }
+        if (request.getParameter("activo").isEmpty()){
+            errors.add("Seleccione una opción");
         }
         return errors.isEmpty();
     }

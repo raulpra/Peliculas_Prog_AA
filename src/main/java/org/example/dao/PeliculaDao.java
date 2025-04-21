@@ -21,10 +21,26 @@ public class PeliculaDao {
 
     public ArrayList<Pelicula> getAll() throws SQLException{
         String sentenciasql = "SELECT peliculas.*, generos.nombre AS genero_nombre FROM peliculas JOIN generos ON peliculas.id_genero = generos.id";
+        return launchQuery (sentenciasql);
+    }
+
+    public ArrayList<Pelicula> getAll(String search) throws SQLException{
+        if (search == null || search.isEmpty()){
+            return getAll();
+        }
+        String sentenciasql = "SELECT peliculas.*, generos.nombre AS genero_nombre FROM peliculas JOIN generos ON peliculas.id_genero = generos.id WHERE peliculas.titulo LIKE ? OR generos.nombre LIKE ?";
+        return launchQuery(sentenciasql, search);
+    }
+
+    private ArrayList<Pelicula> launchQuery(String sentenciasql, String ...search) throws SQLException{
         PreparedStatement statement = null;
         ResultSet result = null;
 
         statement = connection.prepareStatement(sentenciasql);
+        if (search.length >0) {
+            statement.setString(1,"%" + search[0] + "%" );
+            statement.setString(2,"%" + search[0] + "%");
+        }
         result = statement.executeQuery();
 
         ArrayList<Pelicula> peliculaArrayList = new ArrayList<>();
@@ -40,7 +56,6 @@ public class PeliculaDao {
             pelicula.setImagen(result.getString("imagen"));
             pelicula.setPuntuacion(result.getFloat("puntuacion"));
             pelicula.setDisponible(result.getBoolean("disponible"));
-
 
             peliculaArrayList.add(pelicula);
         }

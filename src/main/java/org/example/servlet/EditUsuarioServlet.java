@@ -29,13 +29,13 @@ public class EditUsuarioServlet extends HttpServlet {
         HttpSession currentSession = request.getSession();
         if (currentSession.getAttribute("role") == null) {
             response.sendRedirect("/peliculas_app/login.jsp");
-
         }
 
         if (!validate(request)){
-            response.getWriter().println(errors.toString());
+            response.getWriter().print(errors.toString());
             return;
         }
+
         int id = Integer.parseInt(request.getParameter("id"));
         String nombre = request.getParameter("nombre");
         String apellido = request.getParameter("apellido");

@@ -11,13 +11,16 @@
     }
 %>
 
+<%
+    String search = request.getParameter("search");
+%>
+
 <div class="container mt-4 py-4" style="background-color: #ffffff ">
     <div class="container mt-5">
         <h2 class="mb-4">Gestión de Usuarios</h2>
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <form class="d-flex mb-4" role="search" style="max-width: 350px; width: 100%;">
-                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+            <form  method="get" action="<%=request.getRequestURI()%>" class="d-flex mb-4" role="search" style="max-width: 350px; width: 100%;">
+                <input type="text" name="search" id="search" class="form-control" placeholder="Buscar por nombre, correo o role" value="<%= search != null ? search : "" %>">
             </form>
         <% if (role.equals("admin")){
         %>
@@ -43,7 +46,7 @@
                 Database database = new Database();
                 database.connect();
                 UsuarioDao usuarioDao = new UsuarioDao(database.getConnection());
-                List<Usuario> usuarioList = usuarioDao.getUsuarios();
+                List<Usuario> usuarioList = usuarioDao.getUsuarios(search);
 
                 for (Usuario usuario : usuarioList) {
             %>
@@ -69,7 +72,7 @@
     <button id="btn_siguiente" class="btn btn-outline-secondary">Siguiente</button>
 </div>
 
-<script src="./scripts/script_paginacion.js"></script>
+<script src="./scripts/script_paginacion_tabla.js"></script>
 
 
 <%@include file="includes/footer.jsp"%>
