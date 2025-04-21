@@ -35,8 +35,6 @@
                         if (response === "ok") {
                           window.location.href = "/peliculas_app/index.jsp";
                         } else {
-                          /*con esto siempre se queda el mensaje de login en fondo rojo.
-                          $("#result").html(response);*/
                           $("#result").html("<div class='alert alert-danger' role='alert'>" + response + "</div>");
                         }
                     },
@@ -69,11 +67,11 @@
     <form method="post" id="pelicula-form" enctype="multipart/form-data" class="shadow p-4 bg-white rounded">
         <div class="mb-3">
             <label for="titulo" class="form-label">Título</label>
-            <input type="text" class="form-control" id="titulo" name="titulo" required>
+            <input type="text" class="form-control" id="titulo" name="titulo">
         </div>
         <div class="mb-3">
             <label for="director" class="form-label">Director</label>
-            <input type="text" class="form-control" id="director" name="director" required>
+            <input type="text" class="form-control" id="director" name="director" >
         </div>
         <div class="mb-3">
             <label for="sinopsis" class="form-label">Sinopsis</label>
@@ -81,7 +79,7 @@
         </div>
         <div class="mb-3">
             <label for="fecha_estreno" class="form-label">Fecha de Estreno</label>
-            <input type="date" class="form-control" id="fecha_estreno" name="fecha_estreno" required>
+            <input type="date" class="form-control" id="fecha_estreno" name="fecha_estreno">
         </div>
         <div class="mb-3">
             <label for="puntuacion" class="form-label">Puntuación (0.0 - 10.0)</label>
@@ -89,8 +87,8 @@
         </div>
         <div class="mb-3">
             <label for="id_genero" class="form-label">Género</label>
-            <select class="form-select" id="id_genero" name="id_genero" required>
-                <option selected disabled value="">Selecciona un género</option>
+            <select class="form-select" id="id_genero" name="id_genero">
+                <option value="">Selecciona un género</option>
                 <% for (Genero genero : generos) { %>
                 <option value="<%= genero.getId() %>"><%= genero.getNombre() %></option>
                 <% } %>
@@ -103,7 +101,7 @@
         <div class="mb-3">
             <label for="disponible" class="form-label">Disponible en cines</label>
             <select class="form-select" id="disponible" name="disponible" required>
-                <option selected disabled value="">Selecciona una opción</option>
+                <option value="">Selecciona una opción</option>
                 <option value="true">Disponible</option>
                 <option value="false">Descatalogada</option>
             </select>

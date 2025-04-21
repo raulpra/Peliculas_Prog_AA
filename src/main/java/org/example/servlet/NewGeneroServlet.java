@@ -87,6 +87,12 @@ public class NewGeneroServlet extends HttpServlet {
         if (request.getParameter("descripcion").isEmpty()){
             errors.add("La descripcion es obligatoria");
         }
+        if (request.getParameter("fecha_actualizacion").isEmpty()){
+            errors.add("Elija una fecha");
+        }
+        if (request.getParameter("activo").isEmpty()){
+            errors.add("Una opción es obligatoria");
+        }
         return errors.isEmpty();
     }
 }

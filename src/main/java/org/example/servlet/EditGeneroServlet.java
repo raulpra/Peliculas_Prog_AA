@@ -29,6 +29,10 @@ public class EditGeneroServlet extends HttpServlet {
         if (currentSession.getAttribute("role") == null) {
             response.sendRedirect("/peliculas_app/login.jsp");
         }
+        if (!validate(request)){
+            response.getWriter().print(errors.toString());
+            return;
+        }
 
         int id = Integer.parseInt(request.getParameter("id"));
         String nombre = request.getParameter("nombre");
@@ -79,6 +83,12 @@ public class EditGeneroServlet extends HttpServlet {
         }
         if (request.getParameter("descripcion").isEmpty()){
             errors.add("La descripcion es obligatoria");
+        }
+        if (request.getParameter("fecha_actualizacion").isEmpty()){
+            errors.add("Elija una fecha");
+        }
+        if (request.getParameter("activo").isEmpty()){
+            errors.add("Una opción es obligatoria");
         }
         return errors.isEmpty();
     }

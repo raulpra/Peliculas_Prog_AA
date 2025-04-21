@@ -5,15 +5,20 @@
 <%@include file="includes/header.jsp"%>
 <%@include file="includes/navbar_option.jsp"%>
 
+<%
+    String search = request.getParameter("search");
+%>
+
 <!-- Contenido principal -->
 <div class="container mt-4 py-4" style="background-color: #ffffff ">
     <h1>Descubre todos los géneros disponibles</h1>
     <p>Explora películas, géneros, y accede a más funciones al iniciar sesión.</p>
+
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <form class="d-flex mb-4" role="search" style="max-width: 350px; width: 100%;">
-            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-            <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+        <form method="get" action="<%= request.getRequestURI()%>" class="d-flex mb-4" role="search" style="max-width: 350px; width: 100%;">
+            <input type="text" name="search" id="search" class="form-control" placeholder="Buscar por nombre" value="<%= search != null ? search : "" %>">
         </form>
+
         <% if (role.equals("admin")){
         %>
             <div class="container d-flex justify-content-end py-3">
@@ -28,7 +33,7 @@
             Database database = new Database();
             database.connect();
             GeneroDao generoDao = new GeneroDao(database.getConnection());
-            List<Genero> generoList = generoDao.getAllGeneros();
+            List<Genero> generoList = generoDao.getAllGeneros(search);
             for (Genero genero : generoList){
         %>
 

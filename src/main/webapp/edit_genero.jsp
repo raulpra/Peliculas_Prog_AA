@@ -58,11 +58,11 @@
   <form method="post" id="genero-form"  class="shadow p-4 bg-white rounded">
     <div class="mb-3">
       <label for="nombre" class="form-label">Nombre del género</label>
-      <input type="text" class="form-control" id="nombre" name="nombre" value="<%=genero.getNombre()%>" required>
+      <input type="text" class="form-control" id="nombre" name="nombre" value="<%=genero.getNombre()%>">
     </div>
     <div class="mb-3">
       <label for="descripcion" class="form-label">Descripción</label>
-      <input type="text" class="form-control" id="descripcion" name="descripcion" value ="<%=genero.getDescripcion()%>" required>
+      <input type="text" class="form-control" id="descripcion" name="descripcion" value ="<%=genero.getDescripcion()%>">
     </div>
     <div class="mb-3">
       <label for="ejemplos" class="form-label">Ejemplos :</label>
@@ -70,11 +70,11 @@
     </div>
     <div class="mb-3">
       <label for="fecha_actualizacion" class="form-label">Fecha de actualización</label>
-      <input type="date" class="form-control" id="fecha_actualizacion" name="fecha_actualizacion" value ="<%=genero.getFechaAgregado()%>"required>
+      <input type="date" class="form-control" id="fecha_actualizacion" name="fecha_actualizacion" value ="<%=genero.getFechaAgregado()%>">
     </div>
     <div class="mb-3">
       <label for="activo" class="form-label">Activo</label>
-      <select class="form-select" id="activo" name="activo" required>
+      <select class="form-select" id="activo" name="activo">
         <option disabled value="">Seleccione una opción</option>
         <option value="true" <%=genero.isActivo() ? "selected" : "" %> >Si</option>
         <option value="false" <%=genero.isActivo() ? "selected" : "" %> >No</option>

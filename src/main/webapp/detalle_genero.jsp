@@ -24,12 +24,34 @@
                 <div class="card-body p-4">
                     <p><strong>Nombre:</strong> <%= genero.getNombre() %></p>
                     <p><strong>Descripción:</strong> <%= genero.getDescripcion() %></p>
-                    <p><strong>Ejemplos:</strong> <%= genero.getEjemplos() %></p>
-                    <p><strong>Fecha Actulización:</strong> <%= genero.getFechaAgregado() %></p>
-                    <% if (role.equals ("admin")){
+                    <p><strong>Ejemplos:</strong> <%= genero.getEjemplos() %> ...</p>
+                    <div class="row g-3 mt-3">
+                    <%
+                        PeliculaDao peliculaDao = new PeliculaDao(database.getConnection());
+                        List<Pelicula> peliculaList = peliculaDao.getAll(genero.getNombre());
+                        for (Pelicula pelicula : peliculaList){
+                    %>
+                        <div class="col-4 d-flex justify-content-center">
+                            <div class="card shadow-sm rounded-3 h-100" style="width: 10rem;">
+                                <div class="d-flex justify-content-center align-items-center bg-light" style="height: 180px;">
+                                    <img src="../peliculas-images/<%=pelicula.getImagen() %>" class="img-fluid" style="max-height: 100%; object-fit: contain;" alt="...">
+                                </div>
+                                <div class="card-body text-center p-2">
+                                    <h6 class="card-title mb-1"><%=pelicula.getTitulo()%></h6>
+                                </div>
+                            </div>
+                        </div>
+                    <%
+                        }
+                    %>
+                    </div>
+                    <p class=" mt-4"><strong>Fecha Actulización:</strong> <%= genero.getFechaAgregado() %></p>
+                    <%
+                        if (role.equals ("admin")){
                     %>
                     <p><strong>Activo:</strong> <%= genero.isActivo() ? "SI" : "No" %></p>
-                    <% }
+                    <%
+                        }
                     %>
                 </div>
                 <div class="card-footer text-end">

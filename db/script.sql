@@ -1,6 +1,6 @@
-CREATE DATABASE cineapp;
+CREATE DATABASE IF NOT EXISTS cineapp;
+GRANT ALL PRIVILEGES ON cineapp.* TO user;
 USE cineapp;
-
 
 CREATE TABLE generos (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -34,7 +34,6 @@ CREATE TABLE peliculas (
         disponible BOOLEAN DEFAULT TRUE,
         id_genero INT,
         foreign KEY (id_genero) REFERENCES generos(id)
-
 );
 
 CREATE TABLE favoritos (

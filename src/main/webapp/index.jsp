@@ -3,6 +3,10 @@
 <%@include file="includes/header.jsp"%>
 <%@include file="includes/navbar_option.jsp"%>
 
+<%
+    String search = request.getParameter("search");
+%>
+
 
   <!-- Contenido principal -->
   <div class="container mt-4 py-4" style="background-color: #ffffff ">
@@ -17,11 +21,12 @@
             }
         %>
         <p>Explora películas, géneros, y guarda tus peliculas favoritas al iniciar sesión.</p>
+
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <form class="d-flex mb-4" role="search" style="max-width: 350px; width: 100%;">
-                  <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                  <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+            <form method="get" action="<%= request.getRequestURI()%>" class="d-flex mb-4" role="search" style="max-width: 350px; width: 100%;">
+                <input type="text" name="search" id="search" class="form-control" placeholder="Buscar por título o género" value="<%= search != null ? search : "" %>">
             </form>
+
             <% if (role.equals("admin")){
             %>
                 <div class="container d-flex justify-content-end mt-1 py-3">
@@ -31,19 +36,20 @@
                 }
             %>
         </div>
+
         <div class="row row-cols-1 row-cols-md-3 g-4">
         <%
             Database database = new Database();
             database.connect();
             PeliculaDao peliculaDao = new PeliculaDao(database.getConnection());
-            List<Pelicula> peliculaList = peliculaDao.getAll();
+            List<Pelicula> peliculaList = peliculaDao.getAll(search);
             for (Pelicula pelicula : peliculaList){
         %>
             <div class="col card-paginacion">
                 <div class="card shadow-lg rounded-3 h-100 d-flex flex-column" style="width: 22rem">
 
                    <!-- <img src="images/film2.jpg" class="card-img-top" alt="..."> -->
-                    <img src="images/<%=pelicula.getImagen() %>" class="card-img-top"  style="height: 290px; object-fit: contain" alt="...">
+                    <img src="../peliculas-images/<%=pelicula.getImagen() %>" class="card-img-top" style="height: 290px; object-fit: contain" alt="...">
                     <div class="card-body d-flex flex-column ">
                        <h4 class="card-title mb-1"><%=pelicula.getTitulo()%></h4>
                        <p class="mb-1"> <%=pelicula.getDirector()%></p>
