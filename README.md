@@ -5,7 +5,9 @@ Actividad de aprendizaje 2ª Ev Programación
 ---
 ## 🧩 Descripción General
 
-Este proyecto es una aplicación web desarrollada con **Java (JSP/Servlets)** y **MySQL/MariaDB**, diseñada para la **gestión de películas, usuarios, géneros y favoritos**. La aplicación implementa control de acceso basado en roles (Administrador y Usuario), e incluye operaciones CRUD completas para las siguientes tablas: películas, usuarios y géneros.
+Este proyecto es una aplicación web desarrollada con **Java (JSP/Servlets)** y **MySQL/MariaDB**, diseñada para la **gestión de películas, usuarios, géneros y favoritos**. La aplicación implementa control de acceso basado en roles (Administrador y Usuario), e incluye operaciones CRUD completas para las siguientes tablas: películas, usuarios y géneros. 
+
+La base de datos se encuentra en un contenedor Docker y el proyecto se despliega en el puerto `8082`.
 
 ---
 
@@ -55,7 +57,7 @@ Este proyecto es una aplicación web desarrollada con **Java (JSP/Servlets)** y 
   - HTML5, Bootstrap 5
   - JavaScript, jQuery, AJAX
 - **Base de Datos**:
-  - MySQL / MariaDB
+  - MySQL / MariaDB (en contenedor Docker)
   - Tablas: `usuarios`, `peliculas`, `generos`, `favoritos`
 
 ---
