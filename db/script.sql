@@ -7,7 +7,8 @@ CREATE TABLE generos (
         nombre VARCHAR(50) NOT NULL,
         descripcion VARCHAR(255),
         ejemplos TEXT,
-        fecha_agregado DATE
+        fecha_agregado DATE,
+        activo BOOLEAN DEFAULT TRUE
 );
 
 CREATE TABLE usuarios (
@@ -46,20 +47,20 @@ CREATE TABLE favoritos (
 );
 
 
-INSERT INTO generos (nombre, descripcion, ejemplos, fecha_agregado) VALUES
-        ('Acción', 'Películas con escenas intensas y ritmo rápido', 'Rápidos y Furiosos, John Wick', '2024-01-10'),
-        ('Comedia', 'Películas que buscan hacer reír al público', 'Scary Movie, Superbad', '2024-01-11'),
-        ('Drama', 'Historias profundas y emocionales', 'El Padrino, Forrest Gump', '2024-01-12'),
-        ('Ciencia Ficción', 'Películas con tecnología avanzada o mundos imaginarios', 'Interestelar, Blade Runner', '2024-01-13'),
-        ('Terror', 'Películas de miedo o suspenso extremo', 'El Conjuro, It', '2024-01-14'),
-        ('Romance', 'Películas centradas en el amor', 'Titanic, The Notebook', '2024-01-15'),
-        ('Animación', 'Películas creadas por animación digital o tradicional', 'Toy Story, Coco', '2024-01-16'),
-        ('Fantasía', 'Películas ambientadas en mundos irreales', 'Harry Potter, El Señor de los Anillos', '2024-01-17'),
-        ('Documental', 'Películas que representan hechos reales', 'Free Solo, 13th', '2024-01-18'),
-        ('Aventura', 'Películas centradas en viajes y descubrimientos', 'Indiana Jones, Jumanji', '2024-01-19');
+INSERT INTO generos (nombre, descripcion, ejemplos, fecha_agregado, activo) VALUES
+        ('Acción', 'Películas con escenas intensas y ritmo rápido', 'Rápidos y Furiosos, John Wick', '2024-01-10',TRUE),
+        ('Comedia', 'Películas que buscan hacer reír al público', 'Scary Movie, Superbad', '2024-01-11',TRUE),
+        ('Drama', 'Historias profundas y emocionales', 'El Padrino, Forrest Gump', '2024-01-12',TRUE),
+        ('Ciencia Ficción', 'Películas con tecnología avanzada o mundos imaginarios', 'Interestelar, Blade Runner', '2024-01-13',TRUE),
+        ('Terror', 'Películas de miedo o suspenso extremo', 'El Conjuro, It', '2024-01-14',TRUE),
+        ('Romance', 'Películas centradas en el amor', 'Titanic, The Notebook', '2024-01-15', TRUE),
+        ('Animación', 'Películas creadas por animación digital o tradicional', 'Toy Story, Coco', '2024-01-16',TRUE),
+        ('Fantasía', 'Películas ambientadas en mundos irreales', 'Harry Potter, El Señor de los Anillos', '2024-01-17', TRUE),
+        ('Documental', 'Películas que representan hechos reales', 'Free Solo, 13th', '2024-01-18', TRUE),
+        ('Aventura', 'Películas centradas en viajes y descubrimientos', 'Indiana Jones, Jumanji', '2024-01-19', TRUE);
 
 
-INSERT INTO usuarios (nombre, apellido, fecha_nacimineto, edad, email, password, role, activo, valoracion) VALUES
+INSERT INTO usuarios (nombre, apellido, fecha_nacimiento, edad, email, password, role, activo, valoracion) VALUES
         ('Carlos', 'López', '1990-03-15', 34, 'carlos.lopez@example.com', 'clave123', 'usuario', TRUE, 8.5),
         ('María', 'Fernández', '1985-06-22', 39, 'maria.fernandez@example.com', 'maria85', 'admin', TRUE, 9.2),
         ('José', 'Martínez', '1995-12-05', 29, 'jose.martinez@example.com', 'jose95', 'usuario', TRUE, 7.0),

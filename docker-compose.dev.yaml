@@ -1,16 +1,6 @@
 version: "3.4"
 name: peliculasapp
 services:
-  web:
-    image: tomcat:7
-    container_name: peliculasapp-web
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./web:/usr/local/tomcat/webapps/ROOT
-    depends_on:
-      - db
-
   db:
     image: mariadb:11.3.2
     container_name: peliculasapp-db-dev
