@@ -10,7 +10,7 @@ public class Database {
 
     public void connect() throws ClassNotFoundException, SQLException {
         Class.forName("org.mariadb.jdbc.Driver");
-        connection = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cineapp", "user", "password");
+        connection = DriverManager.getConnection("jdbc:mariadb://db:3306/cineapp", "user", "password");
     }
 
     public void disconnect() throws SQLException {
