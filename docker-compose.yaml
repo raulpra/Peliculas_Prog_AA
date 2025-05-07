@@ -1,0 +1,27 @@
+version: "3.4"
+name: peliculasapp
+
+services:
+  db:
+    image: mariadb:11.3.2
+    container_name: peliculasapp-db-dev
+    environment:
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_PORT: 3306
+      MYSQL_ROOT_PASSWORD: 'rootpassword'
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+
+  web:
+    image: tomcat:9.0
+    container_name: peliculasapp-web
+    depends_on:
+      - db
+    ports:
+      - "8082:8080"
+    volumes:
+      - ./target/PeliculasAA.war:/usr/local/tomcat/webapps/peliculas_app.war
+      - ./src/main/webapp/images:/usr/local/tomcat/webapps/peliculas-images
