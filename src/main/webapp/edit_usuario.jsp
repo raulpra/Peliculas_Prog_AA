@@ -110,6 +110,9 @@
             <label for="role" class="form-label">Rol</label>
             <input type="text" class="form-control" name="role" value="<%= usuario.getRole() %>" readonly>
         </div>
+        <input type="hidden" name="activo" value="<%= usuario.isActivo() %>">
+        <input type="hidden" name="role" value="<%= usuario.getRole() %>">
+        <input type="hidden" name="valoracion"  value="<%= usuario.getValoracion() %>">
         <%
             }
         %>
