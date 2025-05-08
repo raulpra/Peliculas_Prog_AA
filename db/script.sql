@@ -34,7 +34,7 @@ CREATE TABLE peliculas (
         puntuacion DECIMAL(3,1),
         disponible BOOLEAN DEFAULT TRUE,
         id_genero INT,
-        foreign KEY (id_genero) REFERENCES generos(id)
+        foreign KEY (id_genero) REFERENCES generos(id) ON DELETE CASCADE
 );
 
 CREATE TABLE favoritos (

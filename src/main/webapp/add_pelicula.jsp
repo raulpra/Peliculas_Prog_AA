@@ -19,7 +19,7 @@
         $("form").on("submit", function(event) {
             event.preventDefault();
             const form= $("#pelicula-form")[0];//con esto cambiamos la forma en que enviamos los datos
-            const formValue = new FormData(form);//y con esto. todo para poder enviar la imagen al otro lado, el servlet
+            const formValue = new FormData(form);//y con esto para poder enviar la imagen al otro lado, el servlet
             $.ajax({
                 url:"add_pelicula",
                 type: "POST",
